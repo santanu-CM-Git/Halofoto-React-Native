@@ -15,6 +15,8 @@ import register, {
 import country from "../../../context/actions/common/country"
 import StaticText from "../../../global/StaticText"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import { REGISTER } from '../../../constants/RouteNames'
+
 
 const Register = () => {
   const {
@@ -65,10 +67,19 @@ const Register = () => {
   }, [])
 
   useEffect(() => {
+    console.log(error,'jjjjj')
     error?.reg_message?.length &&
       Alert.alert(StaticText.alert.error_heading, error?.reg_message, [
-        { text: StaticText.button.ok, onPress: () => { } },
+        { text: StaticText.button.ok, onPress: () => { navigate(REGISTER)} },
       ])
+      // Alert.alert(StaticText.alert.error_heading, error?.reg_message, [
+      //   {
+      //     text: 'Cancel',
+      //     onPress: () => console.log('Cancel Pressed'),
+      //     style: 'cancel',
+      //   },
+      //   {text: 'OK', onPress: () => console.log('OK Pressed')},
+      // ])
   }, [error])
 
 

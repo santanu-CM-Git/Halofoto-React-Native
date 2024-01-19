@@ -337,7 +337,7 @@ const ManageProfile = ({
                       onChangeText={(value) => {
                         onChange({ name: "insta_id", value });
                       }}
-                      value={form?.insta_id}
+                      value={form?.insta_id != 'null'?form?.insta_id:''}
                       error={errors?.insta_id || error?.errors?.insta_id?.[0]}
                     />
 

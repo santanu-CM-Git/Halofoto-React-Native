@@ -99,8 +99,8 @@ android {
         applicationId "com.halofoto.halofotoLive"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 13
-        versionName "1.29.0"
+        versionCode 16
+        versionName "1.31.0"
     }
 
     splits {

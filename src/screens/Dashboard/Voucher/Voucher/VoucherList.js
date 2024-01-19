@@ -107,7 +107,6 @@ const VoucherList = ({
             <ActivityIndicator size="large" color={Colors.royal_blue} />
           ) : voucherListData.length ? (
             <>
-             
                 <FlatList
                   onRefresh={onRefresh}
                   refreshing={refreshing}

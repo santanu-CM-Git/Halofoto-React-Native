@@ -82,10 +82,11 @@ export default StyleSheet.create({
     width: 21,
   },
   mainScroll: {
-    height:'100%'
+    //height:'100%',
+    paddingBottom:responsiveHeight(20)
   },
   contentContainer: {
-    paddingBottom: 280,
+    paddingBottom: responsiveHeight(50),
   },
   newsSlider: {
     display: "flex",

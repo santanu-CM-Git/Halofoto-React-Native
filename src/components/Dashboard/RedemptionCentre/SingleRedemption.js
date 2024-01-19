@@ -12,8 +12,8 @@ import reedemVoucher, { clearVoucherState } from "../../../context/actions/dashb
 const SingleRedemption = ({ route, navigation }) => {
     const {
         redemptionCentreDetailState: { error, loading, data },
-        reedemVoucherState:{reedemVoucherData, reedemVoucherError, reedemVoucherLoading},
-        redemptionCentreDetailDispatch,reedemVoucherDispatch, 
+        reedemVoucherState: { reedemVoucherData, reedemVoucherError, reedemVoucherLoading },
+        redemptionCentreDetailDispatch, reedemVoucherDispatch,
         navigationDispatch, navigationState: { display }
     } = useContext(GlobalContext)
 
@@ -37,6 +37,12 @@ const SingleRedemption = ({ route, navigation }) => {
         hideNavigation()(navigationDispatch)
         redemptionCentreDetail(voucherId)(redemptionCentreDetailDispatch)
     }, [])
+    useFocusEffect(
+        useCallback(() => {
+            redemptionCentreDetail(voucherId)(redemptionCentreDetailDispatch)
+            console.log('singleRedemtion')
+        }, [])
+    )
 
     const onPress = routes => {
         //console.log(routes,'iiiiiiiiiii')
@@ -44,14 +50,14 @@ const SingleRedemption = ({ route, navigation }) => {
     }
 
     const onSubmit = param => {
-        reedemVoucher(param,1)(reedemVoucherDispatch)
+        reedemVoucher(param, 1)(reedemVoucherDispatch)
     }
-    useEffect(() =>{
+    useEffect(() => {
         reedemVoucherError?.message?.length &&
-        Alert.alert(StaticText.alert.error_heading, reedemVoucherError?.message, [
-            { text: StaticText.button.ok, onPress: () => { } },
-        ] )
-    },[reedemVoucherError])
+            Alert.alert(StaticText.alert.error_heading, reedemVoucherError?.message, [
+                { text: StaticText.button.ok, onPress: () => { } },
+            ])
+    }, [reedemVoucherError])
     useEffect(() => {
         error?.message?.length &&
             Alert.alert(StaticText.alert.error_heading, error?.message, [
@@ -59,7 +65,7 @@ const SingleRedemption = ({ route, navigation }) => {
             ])
     }, [error])
 
-  
+
 
     return (
         <SingleRedemptionScreen
