@@ -17,6 +17,7 @@ export default StyleSheet.create({
 
   overlayWrap: {
     backgroundColor: Colors.black,
+    flex:1,
     // height: "100%",
     width: "100%",
     display: "flex",
@@ -32,7 +33,7 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 20,
-    height: Constants.statusBarHeight + (Platform.OS === "ios" ? responsiveHeight(10) : 140),
+    height: Constants.statusBarHeight + (Platform.OS === "ios" ? responsiveHeight(10) : 50),
     paddingBottom: Platform.OS === "ios" ? 20 : 20,
     width: "100%",
   },
@@ -83,7 +84,7 @@ export default StyleSheet.create({
   },
   mainScroll: {
     //height:'100%',
-    paddingBottom:responsiveHeight(20)
+    paddingBottom:responsiveHeight(5)
   },
   contentContainer: {
     paddingBottom: responsiveHeight(50),
