@@ -100,8 +100,8 @@ const StaticText = {
             navigation_next: `Berikutnya`,
 
             qr_screen: {
-                heading: `Pindai Kode QR`,
-                content: `Pindai kode QR dari kemasan produk Anda`,
+                heading: `PINDAI BARCODE`,
+                content: `PINDAI BARCODE dari kemasan produk Anda`,
             },
 
             step_1: {

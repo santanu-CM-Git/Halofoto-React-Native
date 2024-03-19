@@ -13,7 +13,6 @@ import {
       });
   
       let url = ``;
-  
       if (filter) {
         url = `/mobile/message-list?page=${page}&${filter}`;
       } else {

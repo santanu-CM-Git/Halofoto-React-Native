@@ -1,5 +1,6 @@
 import { Platform, StyleSheet } from "react-native";
 import Colors from "../../../global/Colors";
+import { responsiveFontSize, responsiveHeight } from "react-native-responsive-dimensions";
 
 export default StyleSheet.create({
   container: {
@@ -70,13 +71,13 @@ export default StyleSheet.create({
   },
   text: {
     color: Colors.white,
-    paddingTop: 50,
-    fontSize: 18,
+    paddingTop: responsiveHeight(20),
+    fontSize: responsiveFontSize(3),
     fontWeight: '400',
     fontFamily: 'Montserrat-Regular',
     color: Colors.white,
     textAlign: 'center',
-    lineHeight: 29,
+    //lineHeight: 29,
   },
   text1: {
     fontSize: 18,
