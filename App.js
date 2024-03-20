@@ -1,6 +1,6 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-native-gesture-handler'
-import {LogBox} from 'react-native'
+import { LogBox, Alert } from 'react-native'
 import GlobalProvider from "./src/context/Provider"
 import AppNavContainer from "./src/navigations"
 import messaging from '@react-native-firebase/messaging';
@@ -15,18 +15,29 @@ export default function App() {
       const unsubscribeForeground = messaging().onMessage(async remoteMessage => {
         // Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
         console.log('Received foreground message:', JSON.stringify(remoteMessage));
-        
+
       });
 
       const unsubscribeBackground = messaging().setBackgroundMessageHandler(async remoteMessage => {
         console.log('Received background message:', remoteMessage);
-        
+
       });
 
       return () => {
         unsubscribeForeground();
         //unsubscribeBackground();
       };
+    } else if (Platform.OS === 'ios') {
+      messaging().onMessage(async remoteMessage => {
+        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+        console.log('Received foreground message:', remoteMessage);
+        // Handle foreground messages here
+      });
+
+      messaging().setBackgroundMessageHandler(async remoteMessage => {
+        console.log('Received background message:', remoteMessage);
+        // Handle background messages here
+      });
     }
   }, [])
   return (
