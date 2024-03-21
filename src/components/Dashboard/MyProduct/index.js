@@ -44,6 +44,11 @@ const MyProduct = ({ route, navigation }) => {
             label: StaticText.screen.my_product_list.content.e_repair,
             component: 'Repair'
         },
+        {
+            name: 'upload_invoice',
+            label: StaticText.screen.my_product_list.content.upload_invoice,
+            component: 'invoice'
+        },
     ]
 
     const {

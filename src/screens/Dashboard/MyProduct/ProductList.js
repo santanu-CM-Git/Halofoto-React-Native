@@ -37,10 +37,15 @@ const ProductList = ({ item, onPress, onPressTab, navMenus }) => {
       {item && item?.warranty_details?.id && (
         <Animated.View style={styles.newsCardWrap}>
           <View style={styles.imageWrap}>
+            {item?.product_image?
             <Image
               source={{ uri: item?.product_image?.path }}
               style={styles.image}
-            />
+            />:<Text style={styles.registerStatus}>No Image</Text>
+            }
+          </View>
+          <View style={[styles.registerStatusView, { backgroundColor: item?.warranty_details?.approval_status == 'Pending' ? '#FC9700' : (item?.warranty_details?.approval_status == 'Rejected' ? 'red' : 'green') }]}>
+            <Text style={styles.registerStatus}>{item?.warranty_details?.approval_status}</Text>
           </View>
           <View style={styles.contentWrap}>
             <Pressable onPressIn={fadeIn} onPressOut={fadeOut}>
@@ -65,7 +70,17 @@ const ProductList = ({ item, onPress, onPressTab, navMenus }) => {
                   "DD MMM 'YY"
                 )}
               </Text>
+
             </View>
+            <View style={styles.dateContentWrap}>
+              <Text style={styles.textDateContent}>
+                Status Pendaftaran :
+              </Text>
+              <Text style={styles.textDate}>
+                {item?.warranty_details?.register_status}
+              </Text>
+            </View>
+
             <View style={styles.categoryWrap}>
               <View style={styles.categorySmallWrap}>
                 {navMenus.length &&
@@ -76,6 +91,7 @@ const ProductList = ({ item, onPress, onPressTab, navMenus }) => {
                       item={item}
                       onPress={onPress}
                       onPressTab={onPressTab}
+                      status={item?.warranty_details?.register_status}
                     />
                   ))}
               </View>

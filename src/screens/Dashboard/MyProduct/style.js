@@ -1,6 +1,7 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native"
 import Colors from "../../../global/Colors"
 import Constants from 'expo-constants'
+import { responsiveScreenWidth } from "react-native-responsive-dimensions"
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +11,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 0,
     paddingRight: 0,
-    position:'relative',
+    position: 'relative',
   },
 
   overlayWrap: {
@@ -21,14 +22,14 @@ export default StyleSheet.create({
   },
   topHeader: {
     display: 'flex',
-    alignItems:Platform.OS === 'ios' ? 'flex-end' : 'flex-end',
+    alignItems: Platform.OS === 'ios' ? 'flex-end' : 'flex-end',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingLeft: 20,
     paddingRight: 20,
-    height:Constants.statusBarHeight+(Platform.OS === 'ios' ? 60 : 60),
-    paddingBottom:Platform.OS === 'ios' ? 20 : 20,
-    width:'100%',
+    height: Constants.statusBarHeight + (Platform.OS === 'ios' ? 60 : 60),
+    paddingBottom: Platform.OS === 'ios' ? 20 : 20,
+    width: '100%',
   },
 
   titleHolder: {
@@ -81,7 +82,7 @@ export default StyleSheet.create({
     position: 'absolute',
     left: 0,
     zIndex: 100,
-    top:Platform.OS === 'ios' ? '22%' : Dimensions.get("window").height*0.25,
+    top: Platform.OS === 'ios' ? '22%' : Dimensions.get("window").height * 0.25,
   },
   imageWrap: {
     height: "40%",
@@ -121,7 +122,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   headerInfoWrap: {
-    width:'80%',
+    width: '80%',
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -149,7 +150,7 @@ export default StyleSheet.create({
   },
   categorySmallWrap: {
     width: "100%",
-    height:'20%',
+    height: '20%',
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
@@ -157,7 +158,7 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
   },
   certificateWrap: {
-    width: 167,
+    width: responsiveScreenWidth(48),
     height: 40,
     borderRadius: 30,
     paddingLeft: 25,
@@ -246,4 +247,19 @@ export default StyleSheet.create({
     fontFamily: "Montserrat-SemiBold",
     textAlign: "center",
   },
+  registerStatus: {
+    fontSize: 20,
+    color: Colors.white,
+    fontWeight: "600",
+    fontFamily: "Montserrat-Regular",
+  },
+  registerStatusView: {
+    position: 'absolute',
+    top: 0,
+    right: 10,
+    borderColor: '#fff',
+    borderWidth: 1,
+    padding: 5,
+    borderRadius: 10
+  }
 })

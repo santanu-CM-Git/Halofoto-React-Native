@@ -153,6 +153,7 @@ const StaticText = {
                 bill: `Tagihan`,
                 video: `Video`,
                 e_repair: `E-repair`,
+                upload_invoice:`Unggah Faktur`,
                 no_product: {
                     heading: `Tidak ada produk yang didaftarkan`,
                     content: ``,
