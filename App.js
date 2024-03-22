@@ -27,15 +27,16 @@ export default function App() {
         unsubscribeForeground();
         //unsubscribeBackground();
       };
-    } else if (Platform.OS === 'ios') {
+    }
+    if (Platform.OS === 'ios') {
       messaging().onMessage(async remoteMessage => {
-        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
-        console.log('Received foreground message:', remoteMessage);
+        //Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+        console.log('IOS - Received foreground message:', remoteMessage);
         // Handle foreground messages here
       });
 
       messaging().setBackgroundMessageHandler(async remoteMessage => {
-        console.log('Received background message:', remoteMessage);
+        console.log('IOS - Received background message:', remoteMessage);
         // Handle background messages here
       });
     }

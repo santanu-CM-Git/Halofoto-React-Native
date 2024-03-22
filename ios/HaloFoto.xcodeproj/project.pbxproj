@@ -17,7 +17,7 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9E9B66B322BA04246FD8D571 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C13FB2F632D836C60DF7EC2 /* ExpoModulesProvider.swift */; };
 		B1B195EEBCD947D29B171F58 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77767EB28F524E95A5A143A0 /* SplashScreen.storyboard */; };
-		CEB2E5F02AA99ABB00D0CB36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEB2E5EF2AA99ABB00D0CB36 /* GoogleService-Info.plist */; };
+		CE4CD1062BAD92D7005E67FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE4CD1052BAD92D7005E67FC /* GoogleService-Info.plist */; };
 		CECE65522B0F34080040AAB4 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = CECE65502B0F34080040AAB4 /* assets */; };
 		CECE65532B0F34080040AAB4 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = CECE65512B0F34080040AAB4 /* main.jsbundle */; };
 /* End PBXBuildFile section */
@@ -62,11 +62,11 @@
 		CE3B66A12ACEA82C00898DC9 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		CE3B66A32ACEC10D00898DC9 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		CE3B66A52ACEC11600898DC9 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		CE4CD1052BAD92D7005E67FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE4F969C2ACD9BD70096C861 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		CE4F969D2ACD9BD70096C861 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		CE82A6222ABC57A100300C20 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		CE82A6232ABC57A100300C20 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		CEB2E5EF2AA99ABB00D0CB36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "HaloFoto/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CECE65502B0F34080040AAB4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		CECE65512B0F34080040AAB4 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		CEE218252ABABDEB002A888E /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -80,7 +80,6 @@
 		CEFE85FD2AED21DB00963574 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		CEFE85FF2AED21E600963574 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		CEFF5E5A2A3B3489006FB004 /* HaloFoto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HaloFoto.entitlements; path = HaloFoto/HaloFoto.entitlements; sourceTree = "<group>"; };
-		CEFF5E5B2A3B3C8C006FB004 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D90F35DB7DB5CF4603D96A90 /* Pods_HaloFoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HaloFoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -125,7 +124,7 @@
 		13B07FAE1A68108700A75B9A /* HaloFoto */ = {
 			isa = PBXGroup;
 			children = (
-				CEFF5E5B2A3B3C8C006FB004 /* GoogleService-Info.plist */,
+				CE4CD1052BAD92D7005E67FC /* GoogleService-Info.plist */,
 				CEFF5E5A2A3B3489006FB004 /* HaloFoto.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -209,7 +208,6 @@
 				CEE2182B2ABAC998002A888E /* main.jsbundle */,
 				CE2B026A2AB9DE3600CDE33C /* Images */,
 				CE2B026C2AB9E0F100CDE33C /* Images */,
-				CEB2E5EF2AA99ABB00D0CB36 /* GoogleService-Info.plist */,
 				CE13B0982A8E372F004A91F3 /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* HaloFoto */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -341,10 +339,10 @@
 			files = (
 				CECE65522B0F34080040AAB4 /* assets in Resources */,
 				CECE65532B0F34080040AAB4 /* main.jsbundle in Resources */,
-				CEB2E5F02AA99ABB00D0CB36 /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B1B195EEBCD947D29B171F58 /* SplashScreen.storyboard in Resources */,
+				CE4CD1062BAD92D7005E67FC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +604,7 @@
 				CODE_SIGN_ENTITLEMENTS = HaloFoto/HaloFoto.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = F9937XGZ5Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HaloFoto/Info.plist;
@@ -623,7 +621,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.halofoto.halofotoLive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.halofoto.halofotoLivee;
 				PRODUCT_NAME = HaloFoto;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -646,7 +644,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F9937XGZ5Y;
 				INFOPLIST_FILE = HaloFoto/Info.plist;
