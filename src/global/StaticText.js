@@ -237,7 +237,7 @@ const StaticText = {
                 follow_us3: `Ikuti Kami di Instagram`,
                 check_website: `Lihat situs web kami`,
                 contact_hotline: `Hubungi hotline kami`,
-                dealer_locator: `Lokasi Dealer`,
+                dealer_locator: `Daftar Toko`,
                 authorized_center: `Pusat Layanan Resmi`,
 
             }

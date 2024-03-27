@@ -1,7 +1,7 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native"
 import Colors from "../../../global/Colors"
 import Constants from 'expo-constants'
-import { responsiveScreenWidth } from "react-native-responsive-dimensions"
+import { responsiveFontSize, responsiveScreenWidth } from "react-native-responsive-dimensions"
 
 export default StyleSheet.create({
   container: {
@@ -205,7 +205,7 @@ export default StyleSheet.create({
     lineHeight: 27,
   },
   textContentHeader: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2.5),
     color: Colors.white,
     fontWeight: "600",
     fontFamily: "Montserrat-Regular",
@@ -248,7 +248,7 @@ export default StyleSheet.create({
     textAlign: "center",
   },
   registerStatus: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2),
     color: Colors.white,
     fontWeight: "600",
     fontFamily: "Montserrat-Regular",
