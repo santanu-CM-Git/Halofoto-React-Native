@@ -1,6 +1,6 @@
 import { StyleSheet, StatusBar, Platform } from "react-native";
 import Colors from "../../../global/Colors";
-import { responsiveFontSize } from "react-native-responsive-dimensions";
+import { responsiveFontSize, responsiveHeight } from "react-native-responsive-dimensions";
 
 export default StyleSheet.create({
   container: {
@@ -332,5 +332,39 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 1,
     borderRadius: 20,
+  },
+  /*-----for dropdown-----*/
+  dropdown: {
+    height: responsiveHeight(4),
+    borderColor: 'gray',
+    //borderWidth: 0.7,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginTop: 5
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: '#2F2F2F'
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    color: Colors.white,
+    //color: '#2F2F2F'
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+    color: '#2F2F2F'
+  },
+  itemContainerStyle:{
+    backgroundColor: Colors.catalina_blue
+  },
+  inputTextColor:{
+    color: Colors.white
+  },
+  iconStyle: {
+    width: 30,
+    height: 30,
+    color: Colors.white
   },
 });

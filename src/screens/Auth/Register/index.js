@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Animated,
+  TextInput
 } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 import LinearGradient from 'react-native-linear-gradient';
@@ -26,6 +27,19 @@ import CheckBox from "../../Helper/SvgImg/CheckBox"
 import NavigationHeader from "../../Helper/NavigationHeader"
 import CalendarModal from "../../Helper/Modal/CalendarModal"
 import RoundedCornerGradientStyleBlueFullWidth from "../../Helper/Button/RoundedCornerGradientStyleBlueFullWidth"
+import { responsiveHeight } from "react-native-responsive-dimensions";
+import { useState } from "react";
+import { Dropdown } from 'react-native-element-dropdown';
+
+const data = [
+  { label: 'Instagram', value: '1' },
+  { label: 'Website', value: '2' },
+  { label: 'Youtube', value: '3' },
+  { label: 'Toko Kamera', value: '4' },
+  { label: 'Influencer', value: '5' },
+  { label: 'Teman', value: '6' },
+  { label: 'Lainnya', value: '7' },
+];
 
 export default function Register({
   form,
@@ -49,6 +63,10 @@ export default function Register({
   let AnimatedHeader = new Animated.Value(0)
   const Header_Maximum_Height = 56
   const Header_Min_Height = 56
+
+  const [value, setValue] = useState('1');
+  const [isFocus, setIsFocus] = useState(false);
+  const [other, setOther] = useState('')
 
   return (
     <Container style={styles.container}>
@@ -298,7 +316,52 @@ export default function Register({
                   }}
                   error={errors?.insta_id || error?.errors?.insta_id?.[0]}
                 />
-
+                <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
+                  <Text style={styles.labelText}>Dari mana anda mengetahui Halofoto App?</Text>
+                  <Dropdown
+                    style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                    placeholderStyle={styles.placeholderStyle}
+                    selectedTextStyle={styles.selectedTextStyle}
+                    inputSearchStyle={styles.inputSearchStyle}
+                    itemTextStyle={styles.itemTextStyle}
+                    iconStyle={styles.iconStyle}
+                    data={data}
+                    //search
+                    maxHeight={300}
+                    labelField="label"
+                    valueField="value"
+                    placeholder={!isFocus ? 'Select item' : '...'}
+                    searchPlaceholder="Search..."
+                    value={value}
+                    onFocus={() => setIsFocus(true)}
+                    onBlur={() => setIsFocus(false)}
+                    onChange={item => {
+                      setValue(item.value);
+                      onChange({ name: "ques", value: item.value });
+                      setIsFocus(false);
+                      if(item.value != '7'){
+                        onChange({ name: "other", value:"" })
+                      }
+                    }}
+                  />
+                </View>
+                {value == '7'?
+                <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
+                <TextInput
+                  style={styles.inputTextColor}
+                  placeholder={""}
+                  placeholderTextColor={
+                   "#fff"
+                  }
+                  onChangeText={(value) => {
+                    setOther(value)
+                    onChange({ name: "other", value });
+                  }}
+                  // onFocus={() => setFocused(true)}
+                  // onBlur={() => setFocused(false)}
+                  multiline={false}
+                />
+                </View>:<></>}
                 <View style={styles.formWrappFooter}>
                   <View style={styles.checkboxContainer}>
                     <Pressable onPress={() => {
@@ -312,13 +375,13 @@ export default function Register({
                 </View>
 
                 <View style={styles.buttonWrap}>
-                <RoundedCornerGradientStyleBlueFullWidth
-                  onPress={onSubmit}
-                  label={StaticText.button.next}
-                  disabled={showLoader}
-                  showLoader={showLoader}
-                />
-              </View>
+                  <RoundedCornerGradientStyleBlueFullWidth
+                    onPress={onSubmit}
+                    label={StaticText.button.next}
+                    disabled={showLoader}
+                    showLoader={showLoader}
+                  />
+                </View>
 
                 {/* <Submit
                   onPress={onSubmit}
@@ -332,7 +395,7 @@ export default function Register({
             </ScrollView>
           </KeyboardAvoidingView>
         </SafeAreaView>
-        </LinearGradient>
+      </LinearGradient>
       {/* </ImageBackground> */}
     </Container>
   )
