@@ -344,7 +344,8 @@ export default StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
-    color: '#2F2F2F'
+    //color: '#2F2F2F',
+    color: Colors.white,
   },
   selectedTextStyle: {
     fontSize: 16,

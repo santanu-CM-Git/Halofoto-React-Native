@@ -64,7 +64,7 @@ export default function Register({
   const Header_Maximum_Height = 56
   const Header_Min_Height = 56
 
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('0');
   const [isFocus, setIsFocus] = useState(false);
   const [other, setOther] = useState('')
 
@@ -316,7 +316,7 @@ export default function Register({
                   }}
                   error={errors?.insta_id || error?.errors?.insta_id?.[0]}
                 />
-                <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
+                {/* <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
                   <Text style={styles.labelText}>Dari mana anda mengetahui Halofoto App?</Text>
                   <Dropdown
                     style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
@@ -330,7 +330,7 @@ export default function Register({
                     maxHeight={300}
                     labelField="label"
                     valueField="value"
-                    placeholder={!isFocus ? 'Select item' : '...'}
+                    placeholder={!isFocus ? 'pilih satu opsi' : '...'}
                     searchPlaceholder="Search..."
                     value={value}
                     onFocus={() => setIsFocus(true)}
@@ -344,8 +344,8 @@ export default function Register({
                       }
                     }}
                   />
-                </View>
-                {value == '7'?
+                </View> */}
+                {/* {value == '7'?
                 <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
                 <TextInput
                   style={styles.inputTextColor}
@@ -361,7 +361,7 @@ export default function Register({
                   // onBlur={() => setFocused(false)}
                   multiline={false}
                 />
-                </View>:<></>}
+                </View>:<></>} */}
                 <View style={styles.formWrappFooter}>
                   <View style={styles.checkboxContainer}>
                     <Pressable onPress={() => {

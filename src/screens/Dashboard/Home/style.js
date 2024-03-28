@@ -1,5 +1,6 @@
 import { StyleSheet, StatusBar, Dimensions } from 'react-native';
 import Colors from '../../../global/Colors';
+import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 
 const {height,width} = Dimensions.get('screen')
 
@@ -159,5 +160,62 @@ export default StyleSheet.create({
   catalogBanner: {
     display: 'flex',
     flexDirection: 'column',
-  }
+  },
+  /*-----for dropdown-----*/
+  dropdown: {
+    height: responsiveHeight(4),
+    width:'100%',
+    borderColor: 'gray',
+    //borderWidth: 0.7,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    //marginTop: 5
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: '#2F2F2F',
+    //color: Colors.white,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    //color: Colors.white,
+    color: '#2F2F2F'
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+    color: '#2F2F2F'
+  },
+  itemContainerStyle:{
+    backgroundColor: Colors.catalina_blue
+  },
+  inputTextColor:{
+    color: '#2F2F2F'
+  },
+  iconStyle: {
+    width: 30,
+    height: 30,
+    color: Colors.white
+  },
+  inputWrapp: {
+   justifyContent:'center',
+    width: "100%",
+   borderColor:Colors.blue,
+   borderWidth:1,
+   borderRadius:10
+  },
+  labelText: {
+    fontSize: 14,
+    color: '#2F2F2F',
+    textTransform: "capitalize",
+    fontWeight: "300",
+    marginLeft: responsiveWidth(2)
+  },
+  labelErrorText: {
+    fontSize: 14,
+    color: '#900',
+    textTransform: "capitalize",
+    fontWeight: "300",
+    marginLeft: responsiveWidth(2)
+  },
 });
