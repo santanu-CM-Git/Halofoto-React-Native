@@ -114,89 +114,7 @@ const Register = () => {
     }
   }
 
-  //  const onSubmit = () => {
-  //   console.log(form, 'iiiiiiiiiiiiiiiii')
-  //   if (!form.name) {
-  //     setErrors((prev) => {
-  //       return { ...prev, name: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (!form.email) {
-  //     setErrors((prev) => {
-  //       return { ...prev, email: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (!form.password) {
-  //     setErrors((prev) => {
-  //       return { ...prev, password: StaticText.alert.error }
-  //     })
-  //   }
-  //   // if (!form.dob) {
-  //   //   setErrors((prev) => {
-  //   //     return { ...prev, dob: StaticText.alert.error }
-  //   //   })
-  //   // }
-  //   if (!form.phone_country_code?.ext_code) {
-  //     setErrors((prev) => {
-  //       return { ...prev, phone_country_code: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (!form.phone) {
-  //     setErrors((prev) => {
-  //       return { ...prev, phone: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (!form.country?.id) {
-  //     setErrors((prev) => {
-  //       return { ...prev, country: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (form.country?.id == 103 && !form.state) {
-  //     setErrors((prev) => {
-  //       return { ...prev, state: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (form.country?.id == 103 && !form.city) {
-  //     setErrors((prev) => {
-  //       return { ...prev, city: StaticText.alert.error }
-  //     })
-  //   }
-  //   if (!form.address_line1) {
-  //     setErrors((prev) => {
-  //       return { ...prev, address_line1: StaticText.alert.error }
-  //     })
-  //   }
-  //   // if (!form.gender) {
-  //   //   setErrors((prev) => {
-  //   //     return { ...prev, gender: StaticText.alert.error }
-  //   //   })
-  //   // }
-  //   if (!form.ques) {
-  //     Alert.alert('Peringatan', 'Tolong jawab dari mana anda mengetahui Halofoto app', [
-  //       { text: 'OKE', onPress: () => console.log('OK Pressed') },
-  //     ]);
-  //   } else {
-  //     console.log(Object.values(form).length)
-  //     if (
-  //       Object.values(form).length >= 7 
-  //       //&& Object.values(form).every(item => item || item?.trim()?.length > 0)
-  //       //Object.values(errors).every((item) => !item)
-  //     ) {
-  //       register(form)(authDispatch)
-
-  //       // register(form)(authDispatch)(response => {
-  //       //     setForm(form => {
-  //       //         return {}
-  //       //     })
-  //       //     Alert.alert(StaticText.screen.register.success_heading, StaticText.screen.register.success_text, [
-  //       //         { text: StaticText.button.ok, onPress: () => onPress(LOGIN) },
-  //       //     ])
-  //       // })
-  //     }
-  //   }
-  //  }
-
-  const onSubmit = () => {
+   const onSubmit = () => {
     console.log(form, 'iiiiiiiiiiiiiiiii')
     if (!form.name) {
       setErrors((prev) => {
@@ -253,11 +171,16 @@ const Register = () => {
     //     return { ...prev, gender: StaticText.alert.error }
     //   })
     // }
-   
+    if (!form.ques) {
+      Alert.alert('Peringatan', 'Tolong jawab dari mana anda mengetahui Halofoto app', [
+        { text: 'OKE', onPress: () => console.log('OK Pressed') },
+      ]);
+    } else {
+      console.log(Object.values(form).length)
       if (
-        Object.values(form).length >= 7 &&
+        Object.values(form).length >= 7 
         //&& Object.values(form).every(item => item || item?.trim()?.length > 0)
-        Object.values(errors).every((item) => !item)
+        //Object.values(errors).every((item) => !item)
       ) {
         register(form)(authDispatch)
 
@@ -270,10 +193,87 @@ const Register = () => {
         //     ])
         // })
       }
+    }
+   }
+
+  // const onSubmit = () => {
+  //   console.log(form, 'iiiiiiiiiiiiiiiii')
+  //   if (!form.name) {
+  //     setErrors((prev) => {
+  //       return { ...prev, name: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (!form.email) {
+  //     setErrors((prev) => {
+  //       return { ...prev, email: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (!form.password) {
+  //     setErrors((prev) => {
+  //       return { ...prev, password: StaticText.alert.error }
+  //     })
+  //   }
+  //   // if (!form.dob) {
+  //   //   setErrors((prev) => {
+  //   //     return { ...prev, dob: StaticText.alert.error }
+  //   //   })
+  //   // }
+  //   if (!form.phone_country_code?.ext_code) {
+  //     setErrors((prev) => {
+  //       return { ...prev, phone_country_code: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (!form.phone) {
+  //     setErrors((prev) => {
+  //       return { ...prev, phone: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (!form.country?.id) {
+  //     setErrors((prev) => {
+  //       return { ...prev, country: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (form.country?.id == 103 && !form.state) {
+  //     setErrors((prev) => {
+  //       return { ...prev, state: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (form.country?.id == 103 && !form.city) {
+  //     setErrors((prev) => {
+  //       return { ...prev, city: StaticText.alert.error }
+  //     })
+  //   }
+  //   if (!form.address_line1) {
+  //     setErrors((prev) => {
+  //       return { ...prev, address_line1: StaticText.alert.error }
+  //     })
+  //   }
+  //   // if (!form.gender) {
+  //   //   setErrors((prev) => {
+  //   //     return { ...prev, gender: StaticText.alert.error }
+  //   //   })
+  //   // }
+   
+  //     if (
+  //       Object.values(form).length >= 7 &&
+  //       //&& Object.values(form).every(item => item || item?.trim()?.length > 0)
+  //       Object.values(errors).every((item) => !item)
+  //     ) {
+  //       register(form)(authDispatch)
+
+  //       // register(form)(authDispatch)(response => {
+  //       //     setForm(form => {
+  //       //         return {}
+  //       //     })
+  //       //     Alert.alert(StaticText.screen.register.success_heading, StaticText.screen.register.success_text, [
+  //       //         { text: StaticText.button.ok, onPress: () => onPress(LOGIN) },
+  //       //     ])
+  //       // })
+  //     }
     
 
 
-  }
+  // }
 
 
   return (

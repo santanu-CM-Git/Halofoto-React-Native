@@ -1,7 +1,7 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native"
 import Colors from "../../../global/Colors"
 import Constants from 'expo-constants'
-import { responsiveFontSize, responsiveScreenWidth } from "react-native-responsive-dimensions"
+import { responsiveFontSize, responsiveHeight, responsiveScreenWidth } from "react-native-responsive-dimensions"
 
 export default StyleSheet.create({
   container: {
@@ -147,6 +147,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom:Platform.OS == 'android'? responsiveHeight(25):0
   },
   categorySmallWrap: {
     width: "100%",
