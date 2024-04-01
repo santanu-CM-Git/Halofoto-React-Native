@@ -115,7 +115,7 @@ const Register = () => {
   }
 
    const onSubmit = () => {
-    console.log(form, 'iiiiiiiiiiiiiiiii')
+    console.log(form, 'payload when registration submit')
     if (!form.name) {
       setErrors((prev) => {
         return { ...prev, name: StaticText.alert.error }
@@ -171,7 +171,7 @@ const Register = () => {
     //     return { ...prev, gender: StaticText.alert.error }
     //   })
     // }
-    if (!form.ques) {
+    if (!form.app_reference) {
       Alert.alert('Peringatan', 'Tolong jawab dari mana anda mengetahui Halofoto app', [
         { text: 'OKE', onPress: () => console.log('OK Pressed') },
       ]);
@@ -182,6 +182,7 @@ const Register = () => {
         //&& Object.values(form).every(item => item || item?.trim()?.length > 0)
         //Object.values(errors).every((item) => !item)
       ) {
+        //console.log('submited')
         register(form)(authDispatch)
 
         // register(form)(authDispatch)(response => {

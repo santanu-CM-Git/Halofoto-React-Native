@@ -27,7 +27,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.988154087943-021kt591c3mjjrv64a9fd0rtba95qt98</string>
+				<!-- <string>com.googleusercontent.apps.988154087943-021kt591c3mjjrv64a9fd0rtba95qt98</string>previously added for bundleid com.halofoto.halofotoLive -->
+				<string>com.googleusercontent.apps.988154087943-ul94d8p8hvnaj3266a1fs9ikmsa1bsfa</string>
 			</array>
 		</dict>
 	</array>

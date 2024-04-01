@@ -32,13 +32,13 @@ import { useState } from "react";
 import { Dropdown } from 'react-native-element-dropdown';
 
 const data = [
-  { label: 'Instagram', value: '1' },
-  { label: 'Website', value: '2' },
-  { label: 'Youtube', value: '3' },
-  { label: 'Toko Kamera', value: '4' },
-  { label: 'Influencer', value: '5' },
-  { label: 'Teman', value: '6' },
-  { label: 'Lainnya', value: '7' },
+  { label: 'Instagram', value: 'Instagram' },
+  { label: 'Website', value: 'Website' },
+  { label: 'Youtube', value: 'Youtube' },
+  { label: 'Toko Kamera', value: 'Toko Kamera' },
+  { label: 'Influencer', value: 'Influencer' },
+  { label: 'Teman', value: 'Teman' },
+  { label: 'Lainnya', value: 'Lainnya' },
 ];
 
 export default function Register({
@@ -337,15 +337,15 @@ export default function Register({
                     onBlur={() => setIsFocus(false)}
                     onChange={item => {
                       setValue(item.value);
-                      onChange({ name: "ques", value: item.value });
+                      onChange({ name: "app_reference", value: item.value });
                       setIsFocus(false);
-                      if(item.value != '7'){
+                      if(item.value != 'Lainnya'){
                         onChange({ name: "other", value:"" })
                       }
                     }}
                   />
                 </View>
-                {value == '7'?
+                {value == 'Lainnya'?
                 <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
                 <TextInput
                   style={styles.inputTextColor}

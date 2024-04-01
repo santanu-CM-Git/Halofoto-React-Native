@@ -1,6 +1,6 @@
 import { Platform, StyleSheet } from "react-native";
 import Colors from "../../../global/Colors";
-import { responsiveFontSize, responsiveHeight } from "react-native-responsive-dimensions";
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
 export default StyleSheet.create({
   container: {
@@ -10,6 +10,8 @@ export default StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 0,
     paddingRight: 0,
+    height: "100%",
+    width: "100%",
   },
   overlayWrap: {
     backgroundColor: Colors.black,
@@ -25,7 +27,7 @@ export default StyleSheet.create({
   contentWrap: {
     display: "flex",
     alignItems: "center",
-    padding: 40,
+    paddingHorizontal: responsiveHeight(5),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -67,12 +69,14 @@ export default StyleSheet.create({
     width: 370,
     display: "flex",
     justifyContent: "center",
-    marginTop: Platform.OS == 'android' ? 50 : 0,
+    //marginTop: Platform.OS == 'android' ? responsiveHeight(10) : 0,
+    position:'absolute',
+    bottom:15
   },
   text: {
     color: Colors.white,
-    paddingTop: responsiveHeight(20),
-    fontSize: responsiveFontSize(3),
+    paddingTop: responsiveHeight(2),
+    fontSize: responsiveFontSize(2),
     fontWeight: '400',
     fontFamily: 'Montserrat-Regular',
     color: Colors.white,
@@ -89,12 +93,12 @@ export default StyleSheet.create({
     textAlign: "center"
   },
   textSize: {
-    paddingTop: 50,
-    fontSize: 40,
+    marginTop:responsiveHeight(5),
+    fontSize: responsiveFontSize(5),
     fontWeight: '300',
     fontFamily: 'Montserrat-Regular',
     color: Colors.white,
-    width: 376,
+    width: '100%',
     textAlign: 'center'
   },
   textPointsSize: {

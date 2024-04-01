@@ -5,7 +5,8 @@ import {
   ImageBackground,
   ScrollView,
   Dimensions,
-  TextInput
+  TextInput,
+  Alert
 } from "react-native"
 import Carousel from 'react-native-banner-carousel';
 import Modal from "react-native-modal";
@@ -16,22 +17,26 @@ import AppSettings from "../../../global/AppSettings"
 import styles from "./style"
 import DashboardHeader from "../../Helper/DashboardHeader"
 import Colors from "../../../global/Colors"
-import { WARENTY_REGISTRATION_PACKAGE_QR_CODE } from "../../../constants/RouteNames"
+import { DASHBOARD, WARENTY_REGISTRATION_PACKAGE_QR_CODE } from "../../../constants/RouteNames"
 import DashboardButtons from "./DashboardButtons"
 import StaticText from "../../../global/StaticText"
 import RoundedCornerGradientStyleBlueFullWidth from "../../Helper/Button/RoundedCornerGradientStyleBlueFullWidth"
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Dropdown } from 'react-native-element-dropdown';
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import env from '../../../config/env'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 
 const datadropdown = [
-  { label: 'Instagram', value: '1' },
-  { label: 'Website', value: '2' },
-  { label: 'Youtube', value: '3' },
-  { label: 'Toko Kamera', value: '4' },
-  { label: 'Influencer', value: '5' },
-  { label: 'Teman', value: '6' },
-  { label: 'Lainnya', value: '7' },
+  { label: 'Instagram', value: 'Instagram' },
+  { label: 'Website', value: 'Website' },
+  { label: 'Youtube', value: 'Youtube' },
+  { label: 'Toko Kamera', value: 'Toko Kamera' },
+  { label: 'Influencer', value: 'Influencer' },
+  { label: 'Teman', value: 'Teman' },
+  { label: 'Lainnya', value: 'Lainnya' },
 ];
 
 const BannerWidth = Dimensions.get('window').width;
@@ -51,7 +56,8 @@ const Home = ({
   profileData,
   notificationCount
 }) => {
-  // console.log(profileData,'profileDataprofileData')
+  //console.log(profileData, 'profileDataprofileData')
+  const { navigate, goBack } = useNavigation()
   const [isModalVisible, setModalVisible] = useState(false);
   const [value, setValue] = useState('0');
   const [dropdownError, setDropdownError] = useState('Silakan pilih salah satu opsi')
@@ -62,27 +68,126 @@ const Home = ({
     setModalVisible(!isModalVisible);
   };
   useEffect(() => {
-    // if(profileData?.user?.tamron_user == "false"){
-    //   setModalVisible(true)
-    // }
+    fetchProfileData()
   }, []);
+  const fetchProfileData = () => {
+    AsyncStorage.getItem('token', (err, token) => {
+      console.log(token, 'tokennnnnnnn')
+      axios.get(`${env.BACKEND_URL}/mobile/my-profile`, {
+        headers: {
+          Accept: 'application/json',
+          "Authorization": 'Bearer ' + token,
+        },
+      })
+        .then(res => {
+          console.log(JSON.stringify(res.data), 'ddddddddd')
+          const data = res.data;
+          const appReference = data?.user.app_reference;
+          if (appReference == null) {
+            setModalVisible(true)
+            console.log('app reference not exists')
+          } else {
+            setModalVisible(false)
+            console.log('app reference already exists')
+          }
+        })
+        .catch(e => {
+          console.log(`user update error ${e}`)
+          Alert.alert('Ups..', "Ada yang salah", [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
+        });
+    });
+
+  }
 
   const updateReference = () => {
-    console.log(value + ' ' + other,'firstttt');
+    //console.log(value + ' ' + other,'firstttt');
     if (value === '0') {
       setDropdownError('Silakan pilih salah satu opsi');
       setOtherError(''); // Clear other error when dropdown is selected as '0'
     } else {
       setDropdownError('');
-      if (value === '7') {
+      if (value === 'Lainnya') {
         if (other.trim() !== '') {
           console.log(value + ' ' + other, 'insideeee');
           setOtherError(''); // Clear other error when '7' is selected and other field is not empty
+          AsyncStorage.getItem('user', (err, user) => {
+            AsyncStorage.getItem('token', (err, token) => {
+              const jsonObject = JSON.parse(user);
+              console.log(token, 'tokennnnnnnn')
+              const option = {
+                "other": other,
+                "app_reference": value,
+                "id": jsonObject.id,
+              }
+              console.log(option)
+              axios.post(`${env.BACKEND_URL}/mobile/update-app-reference`, option, {
+                headers: {
+                  Accept: 'application/json',
+                  "Authorization": 'Bearer ' + token,
+                },
+              })
+                .then(res => {
+                  console.log(JSON.stringify(res.data))
+                  Alert.alert('Besar..', res.data.message, [
+                    {
+                      text: 'OK', onPress: () => {
+                        setModalVisible(false)
+                        fetchProfileData()
+                      }
+                    },
+                  ]);
+                })
+                .catch(e => {
+                  console.log(`user update error ${e}`)
+                  Alert.alert('Ups..', "Ada yang salah", [
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                  ]);
+                });
+            });
+          });
         } else {
           setOtherError('Silahkan tulis nama referensinya');
         }
       } else {
         setOtherError(''); // Clear other error when '7' is not selected
+        AsyncStorage.getItem('user', (err, user) => {
+          AsyncStorage.getItem('token', (err, token) => {
+            const jsonObject = JSON.parse(user);
+            console.log(token, 'tokennnnnnnn')
+            const option = {
+              "other": "",
+              "app_reference": value,
+              "id": jsonObject.id,
+            }
+            console.log(option)
+            axios.post(`${env.BACKEND_URL}/mobile/update-app-reference`, option, {
+              headers: {
+                Accept: 'application/json',
+                "Authorization": 'Bearer ' + token,
+              },
+            })
+              .then(res => {
+                console.log(JSON.stringify(res.data))
+                Alert.alert('Besar..', res.data.message, [
+                  {
+                    text: 'OK', onPress: () => {
+                      setModalVisible(false)
+                      fetchProfileData()
+                    }
+                  },
+                ]);
+              })
+              .catch(e => {
+                console.log(`user update error ${e}`)
+                Alert.alert('Ups..', "Ada yang salah", [
+                  { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ]);
+              });
+          });
+        });
+        console.log('not other option')
       }
     }
   }
@@ -199,62 +304,63 @@ const Home = ({
         {/* <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', height: 50, width: 50, borderRadius: 25, position: 'absolute', bottom: '75%', left: '45%', right: '45%' }}>
           <Icon name="cross" size={30} color="#900" onPress={toggleModal} />
         </View> */}
-        <View style={{ height: '40%', backgroundColor: Colors.link_water, position: 'absolute', bottom: 0, width: '100%' }}>
-          <View style={{ padding: 20 }}>
-            <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
-              <Text style={styles.labelText}>Dari mana anda mengetahui Halofoto App?</Text>
-              <Dropdown
-                style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                inputSearchStyle={styles.inputSearchStyle}
-                itemTextStyle={styles.itemTextStyle}
-                iconStyle={styles.iconStyle}
-                data={datadropdown}
-                //search
-                maxHeight={300}
-                labelField="label"
-                valueField="value"
-                placeholder={!isFocus ? 'pilih satu opsi' : '...'}
-                searchPlaceholder="Search..."
-                value={value}
-                onFocus={() => setIsFocus(true)}
-                onBlur={() => setIsFocus(false)}
-                onChange={item => {
-                  setValue(item.value);
-                  setDropdownError('')
-                  setIsFocus(false);
-                }}
-              />
+        <View style={{ height: '40%', backgroundColor: Colors.link_water, position: 'relative', width: '100%', padding: 20 }}>
+          <View style={[styles.inputWrapp, { height: responsiveHeight(10) }]}>
+            <Text style={styles.labelText}>Dari mana anda mengetahui Halofoto App?</Text>
+            <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              itemTextStyle={styles.itemTextStyle}
+              iconStyle={styles.iconStyle}
+              data={datadropdown}
+              //search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? 'pilih satu opsi' : '...'}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={item => {
+                setValue(item.value);
+                setDropdownError('')
+                if (item.value != 'Lainnya') {
+                  setOther("")
+                }
+                setIsFocus(false);
+              }}
+            />
 
-            </View>
-            {dropdownError ?
-              <Text style={styles.labelErrorText}>{dropdownError}</Text> : <></>}
-            {value == '7' ?
-              <>
-                <View style={[styles.inputWrapp, { height: responsiveHeight(10), marginTop: responsiveHeight(4) }]}>
-                  <TextInput
-                    style={styles.inputTextColor}
-                    placeholder={" silahkan tulis nama referensinya"}
-                    placeholderTextColor={
-                      "#2F2F2F"
-                    }
-                    onChangeText={(value) => {
-                      setOther(value)
-                      setOtherError('')
-                    }}
-                    // onFocus={() => setFocused(true)}
-                    // onBlur={() => setFocused(false)}
-                    multiline={false}
-                  />
+          </View>
+          {dropdownError ?
+            <Text style={styles.labelErrorText}>{dropdownError}</Text> : <></>}
+          {value == 'Lainnya' ?
+            <>
+              <View style={[styles.inputWrapp, { height: responsiveHeight(10), marginTop: responsiveHeight(4) }]}>
+                <TextInput
+                  style={styles.inputTextColor}
+                  placeholder={" silahkan tulis nama referensinya"}
+                  placeholderTextColor={
+                    "#2F2F2F"
+                  }
+                  onChangeText={(value) => {
+                    setOther(value)
+                    setOtherError('')
+                  }}
+                  // onFocus={() => setFocused(true)}
+                  // onBlur={() => setFocused(false)}
+                  multiline={false}
+                />
 
-                </View><Text style={styles.labelErrorText}>{otherError}</Text></> : <></>}
-            <View style={[styles.buttonWrap, { marginTop: responsiveHeight(3) }]}>
-              <RoundedCornerGradientStyleBlueFullWidth
-                onPress={() => updateReference()}
-                label={"Kirim"}
-              />
-            </View>
+              </View><Text style={styles.labelErrorText}>{otherError}</Text></> : <></>}
+          <View style={[styles.buttonWrap, { position: 'absolute', bottom: 0 }]}>
+            <RoundedCornerGradientStyleBlueFullWidth
+              onPress={() => updateReference()}
+              label={"Kirim"}
+            />
           </View>
         </View>
       </Modal>
