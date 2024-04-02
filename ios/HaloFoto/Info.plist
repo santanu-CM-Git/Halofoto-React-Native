@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.35.0</string>
+	<string>1.36.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -27,13 +27,12 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<!-- <string>com.googleusercontent.apps.988154087943-021kt591c3mjjrv64a9fd0rtba95qt98</string>previously added for bundleid com.halofoto.halofotoLive -->
 				<string>com.googleusercontent.apps.988154087943-ul94d8p8hvnaj3266a1fs9ikmsa1bsfa</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>20</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true />
 	<key>NSAppTransportSecurity</key>
