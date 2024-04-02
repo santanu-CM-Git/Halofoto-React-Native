@@ -186,6 +186,9 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#2F2F2F'
   },
+  itemTextStyle:{
+    color:'#2F2F2F'
+  },
   itemContainerStyle:{
     backgroundColor: Colors.catalina_blue
   },

@@ -173,11 +173,11 @@ export default StyleSheet.create({
   },
 
   labelText: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.6),
     color: Colors.white,
     textTransform: "capitalize",
     fontWeight: "300",
-    marginBottom: 10,
+    marginBottom: responsiveHeight(1),
   },
   labelTextSmall: {
     fontSize: 14,
@@ -356,6 +356,9 @@ export default StyleSheet.create({
     height: 40,
     fontSize: 16,
     color: '#2F2F2F'
+  },
+  itemTextStyle:{
+    color:'#2F2F2F'
   },
   itemContainerStyle:{
     backgroundColor: Colors.catalina_blue
