@@ -147,7 +147,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom:Platform.OS == 'android'? responsiveHeight(25):0
+    marginBottom:Platform.OS == 'android'? responsiveHeight(30):0
   },
   categorySmallWrap: {
     width: "100%",
