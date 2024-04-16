@@ -166,7 +166,7 @@ export default StyleSheet.create({
     display: "flex",
     flexDirection: "column-reverse",
     justifyContent: 'space-between',
-    width: Platform.OS == 'ios' ? responsiveWidth(45.5) : responsiveWidth(45.5),
+    width: Platform.OS == 'ios' ? responsiveWidth(45.5) : responsiveWidth(43),
     marginRight: 10,
     height: 350,
 

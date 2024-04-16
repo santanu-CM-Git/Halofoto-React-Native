@@ -130,7 +130,7 @@ const Home = ({
               })
                 .then(res => {
                   console.log(JSON.stringify(res.data))
-                  Alert.alert('Besar..', res.data.message, [
+                  Alert.alert('Selamat..', "Referensi anda telah berhasil disimpan", [
                     {
                       text: 'OK', onPress: () => {
                         setModalVisible(false)
@@ -170,7 +170,7 @@ const Home = ({
             })
               .then(res => {
                 console.log(JSON.stringify(res.data))
-                Alert.alert('Besar..', res.data.message, [
+                Alert.alert('Selamat..', "Referensi anda telah berhasil disimpan", [
                   {
                     text: 'OK', onPress: () => {
                       setModalVisible(false)

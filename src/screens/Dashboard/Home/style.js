@@ -1,6 +1,6 @@
 import { StyleSheet, StatusBar, Dimensions } from 'react-native';
 import Colors from '../../../global/Colors';
-import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 
 const {height,width} = Dimensions.get('screen')
 
@@ -58,7 +58,7 @@ export default StyleSheet.create({
   },
 
   bannerText: {
-    fontSize: 20,
+    fontSize: responsiveFontSize(2),
     color: Colors.white,
     fontWeight: '300',
     fontFamily: 'Montserrat-Regular',

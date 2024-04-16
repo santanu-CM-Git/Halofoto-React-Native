@@ -1,7 +1,7 @@
 import { Platform, StyleSheet } from "react-native"
 import Colors from "../../../../global/Colors"
 import Constants from 'expo-constants'
-import { responsiveFontSize, responsiveHeight } from "react-native-responsive-dimensions";
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
 export default StyleSheet.create({
   container: {
@@ -185,7 +185,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: 122,
+    //width: responsiveWidth(40),
     height: 40,
     borderRadius: 40,
     marginRight: 10,
@@ -196,9 +196,10 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "rgba(211, 212, 213, 0.20)",
-    width: "100%",
+    //width: "100%",
     height: 40,
     borderRadius: 40,
+    paddingHorizontal:40
   },
 
   newsListWrap: {
