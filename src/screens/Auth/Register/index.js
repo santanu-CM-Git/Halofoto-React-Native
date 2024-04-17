@@ -39,6 +39,7 @@ const data = [
   { label: 'Influencer', value: 'Influencer' },
   { label: 'Teman', value: 'Teman' },
   { label: 'Lainnya', value: 'Lainnya' },
+  { label: 'Whatsapp blast', value: 'Whatsapp blast' },
 ];
 
 export default function Register({

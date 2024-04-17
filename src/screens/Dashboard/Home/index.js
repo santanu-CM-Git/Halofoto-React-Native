@@ -37,6 +37,7 @@ const datadropdown = [
   { label: 'Influencer', value: 'Influencer' },
   { label: 'Teman', value: 'Teman' },
   { label: 'Lainnya', value: 'Lainnya' },
+  { label: 'Whatsapp blast', value: 'Whatsapp blast' },
 ];
 
 const BannerWidth = Dimensions.get('window').width;
