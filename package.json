@@ -47,6 +47,7 @@
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-banner-carousel": "^1.0.3",
+    "react-native-device-info": "^10.13.1",
     "react-native-eject": "^0.2.0",
     "react-native-element-dropdown": "^2.10.4",
     "react-native-fbsdk-next": "^11.2.1",
@@ -67,7 +68,8 @@
     "react-native-track-player": "^3.2.0",
     "react-native-video": "^5.2.1",
     "react-native-webview": "^13.2.1",
-    "react-native-youtube-iframe": "^2.3.0"
+    "react-native-youtube-iframe": "^2.3.0",
+    "sp-react-native-in-app-updates": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -1,4 +1,4 @@
-import { BACKEND_URL, WEBSITE_URL, GOOGLE_CLIENTID, FACEBOOK_APP_ID, WEB_URL, FACEBOOK_URL, WHATSAPP_URL, INSTAGRAM_URL } from '@env'
+import { BACKEND_URL, WEBSITE_URL, GOOGLE_CLIENTID, FACEBOOK_APP_ID, WEB_URL, FACEBOOK_URL, WHATSAPP_URL, INSTAGRAM_URL,PLATFORM } from '@env'
 
 const environmentVariables = {
     BACKEND_URL,
@@ -9,6 +9,7 @@ const environmentVariables = {
     FACEBOOK_URL,
     WHATSAPP_URL,
     INSTAGRAM_URL,
+    PLATFORM, 
 }
 
 export default environmentVariables

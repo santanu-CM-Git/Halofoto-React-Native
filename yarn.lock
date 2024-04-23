@@ -3157,6 +3157,13 @@
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
 
+"apisauce@^2.1.1":
+  "integrity" "sha512-MdxR391op/FucS2YQRfB/NMRyCnHEPDd4h17LRIuVYi0BpGmMhpxc0shbOpfs5ahABuBEffNCGal5EcsydbBWg=="
+  "resolved" "https://registry.npmjs.org/apisauce/-/apisauce-2.1.6.tgz"
+  "version" "2.1.6"
+  dependencies:
+    "axios" "^0.21.4"
+
 "appdirsjs@^1.2.4":
   "integrity" "sha512-Quji6+8kLBC3NnBeo14nPDq0+2jUs5s3/xEye+udFHumHhRk4M7aAMXp/PBJqkKYGuuyR9M/6Dq7d2AViiGmhw=="
   "resolved" "https://registry.npmjs.org/appdirsjs/-/appdirsjs-1.2.7.tgz"
@@ -3353,6 +3360,13 @@
   "integrity" "sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw=="
   "resolved" "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz"
   "version" "1.0.5"
+
+"axios@^0.21.4":
+  "integrity" "sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz"
+  "version" "0.21.4"
+  dependencies:
+    "follow-redirects" "^1.14.0"
 
 "axios@^1.4.0":
   "integrity" "sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA=="
@@ -5470,7 +5484,7 @@
   "resolved" "https://registry.npmjs.org/flow-parser/-/flow-parser-0.206.0.tgz"
   "version" "0.206.0"
 
-"follow-redirects@^1.15.0":
+"follow-redirects@^1.14.0", "follow-redirects@^1.15.0":
   "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
   "version" "1.15.2"
@@ -9022,6 +9036,21 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
+"react-native-device-info@^0.9.3":
+  "integrity" "sha512-BsRPImeOSPOioitx2OREwuyGRsXiqhcNMPrIJ79FFWB2kbANZk56VqoSxta/i/RB1v3Xws0YDLLSqz9kEeudcQ=="
+  "resolved" "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-0.9.9.tgz"
+  "version" "0.9.9"
+
+"react-native-device-info@^10.13.1":
+  "integrity" "sha512-j/7Z+Yl9Cesjp8vKaVzbuJQKJSVs4ojXATt5WjwipZ0Ss0mBJjqtbc4x5dfZLmQ4y55VVa7c0v8KHca1iqY/TQ=="
+  "resolved" "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.13.1.tgz"
+  "version" "10.13.1"
+
+"react-native-device-info@10.3.0":
+  "integrity" "sha512-/ziZN1sA1REbJTv5mQZ4tXggcTvSbct+u5kCaze8BmN//lbxcTvWsU6NQd4IihLt89VkbX+14IGc9sVApSxd/w=="
+  "resolved" "https://registry.npmjs.org/react-native-device-info/-/react-native-device-info-10.3.0.tgz"
+  "version" "10.3.0"
+
 "react-native-dotenv@^3.4.8":
   "integrity" "sha512-dbyd+mcy7SUzxEgmt33TRf1FGcNe6swJhXmB0unKkI49F7+pidog9kPtjxMLTAfmKA8gcN2XHQSKltGfGbGCLQ=="
   "resolved" "https://registry.npmjs.org/react-native-dotenv/-/react-native-dotenv-3.4.9.tgz"
@@ -9143,6 +9172,14 @@
   "integrity" "sha512-J5NPOAQmqlmBAtEkN3FBrmCwdTGw+5t+Q82YQlujbhx17qMe/7EL47c8boHNE6K+BIsd48NOhbP0quGUiJvOLQ=="
   "resolved" "https://registry.npmjs.org/react-native-sha256/-/react-native-sha256-1.4.9.tgz"
   "version" "1.4.9"
+
+"react-native-siren@0.0.5":
+  "integrity" "sha512-mOzjFpm8ASNI/vnc+uWcj4ogboRrzfzmueCMYavLvyz5QbLyDem2LI9vtsz7t9fxzw2tZzc8XPfRb0IjUJXfZw=="
+  "resolved" "https://registry.npmjs.org/react-native-siren/-/react-native-siren-0.0.5.tgz"
+  "version" "0.0.5"
+  dependencies:
+    "apisauce" "^2.1.1"
+    "react-native-device-info" "^0.9.3"
 
 "react-native-skeleton-placeholder@^5.2.4":
   "integrity" "sha512-OZntVq1hU1UX33FltxK2ezT2v9vHIhV8YnEbnMWUCvxT0N9OsgD1qxiHm6qb9YRJVgq2o5z3S7dNPsPnDF/jNg=="
@@ -9732,6 +9769,11 @@
   dependencies:
     "lru-cache" "^6.0.0"
 
+"semver@7.2.1":
+  "integrity" "sha512-aHhm1pD02jXXkyIpq25qBZjr3CQgg8KST8uX0OWXch3xE6jw+1bfbWnCjzMwojsTquroUmKFHNzU6x26mEiRxw=="
+  "resolved" "https://registry.npmjs.org/semver/-/semver-7.2.1.tgz"
+  "version" "7.2.1"
+
 "semver@7.3.2":
   "integrity" "sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ=="
   "resolved" "https://registry.npmjs.org/semver/-/semver-7.3.2.tgz"
@@ -10027,6 +10069,16 @@
   "integrity" "sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA=="
   "resolved" "https://registry.npmjs.org/source-map/-/source-map-0.7.4.tgz"
   "version" "0.7.4"
+
+"sp-react-native-in-app-updates@^1.4.0":
+  "integrity" "sha512-zhFUjeaPqykDVyYLRXCLLZjDMMfbe4ylOqPEpF3vvzC0V+WB9q07KkYxOm+ETuaZhEXbQADiqJh7uzFOZynmnw=="
+  "resolved" "https://registry.npmjs.org/sp-react-native-in-app-updates/-/sp-react-native-in-app-updates-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "react-native-device-info" "10.3.0"
+    "react-native-siren" "0.0.5"
+    "semver" "7.2.1"
+    "underscore" "1.12.1"
 
 "split-on-first@^1.0.0":
   "integrity" "sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw=="
@@ -10641,6 +10693,11 @@
     "has-bigints" "^1.0.2"
     "has-symbols" "^1.0.3"
     "which-boxed-primitive" "^1.0.2"
+
+"underscore@1.12.1":
+  "integrity" "sha512-hEQt0+ZLDVUMhebKxL4x1BTtDY7bavVofhZ9KZ4aI26X9SRaE+Y3m83XUL1UP2jn8ynjndwCCpEHdUG+9pP1Tw=="
+  "resolved" "https://registry.npmjs.org/underscore/-/underscore-1.12.1.tgz"
+  "version" "1.12.1"
 
 "unicode-canonical-property-names-ecmascript@^2.0.0":
   "integrity" "sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ=="

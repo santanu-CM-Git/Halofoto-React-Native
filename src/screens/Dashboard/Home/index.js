@@ -6,7 +6,9 @@ import {
   ScrollView,
   Dimensions,
   TextInput,
-  Alert
+  Alert,
+  Platform,
+  Linking
 } from "react-native"
 import Carousel from 'react-native-banner-carousel';
 import Modal from "react-native-modal";
@@ -28,6 +30,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import env from '../../../config/env'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import DeviceInfo from 'react-native-device-info';
 
 const datadropdown = [
   { label: 'Instagram', value: 'Instagram' },
@@ -60,6 +63,7 @@ const Home = ({
   //console.log(profileData, 'profileDataprofileData')
   const { navigate, goBack } = useNavigation()
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isUpdateModalVisible, setUpdateModalVisible] = useState(false);
   const [value, setValue] = useState('0');
   const [dropdownError, setDropdownError] = useState('Silakan pilih salah satu opsi')
   const [isFocus, setIsFocus] = useState(false);
@@ -69,38 +73,101 @@ const Home = ({
     setModalVisible(!isModalVisible);
   };
   useEffect(() => {
-    fetchProfileData()
+    //fetchProfileData()
+    fetchCurrentVersion()
   }, []);
-  const fetchProfileData = () => {
-    AsyncStorage.getItem('token', (err, token) => {
-      console.log(token, 'tokennnnnnnn')
-      axios.get(`${env.BACKEND_URL}/mobile/my-profile`, {
+  // const fetchProfileData = async () => {
+  //   AsyncStorage.getItem('token', (err, token) => {
+  //     console.log(token, 'tokennnnnnnn')
+  //     axios.get(`${env.BACKEND_URL}/mobile/my-profile`, {
+  //       headers: {
+  //         Accept: 'application/json',
+  //         "Authorization": 'Bearer ' + token,
+  //       },
+  //     })
+  //       .then(res => {
+  //         const versionNumber = await DeviceInfo.getVersion();
+  //         console.log(versionNumber)
+  //         console.log(JSON.stringify(res.data), 'ddddddddd')
+  //         const data = res.data;
+  //         const appReference = data?.user.app_reference;
+  //         if (appReference == null) {
+  //           setModalVisible(true)
+  //           console.log('app reference not exists')
+  //         } else {
+  //           setModalVisible(false)
+  //           console.log('app reference already exists')
+  //         }
+  //       })
+  //       .catch(e => {
+  //         console.log(`user update error ${e}`)
+  //         Alert.alert('Ups..', "Ada yang salah", [
+  //           { text: 'OK', onPress: () => console.log('OK Pressed') },
+  //         ]);
+  //       });
+  //   });
+
+  // }
+
+  const fetchCurrentVersion = async () => {
+    try {
+
+      const response = await axios.post(`${env.BACKEND_URL}/mobile/app-version-check`, {
         headers: {
           Accept: 'application/json',
-          "Authorization": 'Bearer ' + token,
         },
-      })
-        .then(res => {
-          console.log(JSON.stringify(res.data), 'ddddddddd')
-          const data = res.data;
-          const appReference = data?.user.app_reference;
-          if (appReference == null) {
-            setModalVisible(true)
-            console.log('app reference not exists')
-          } else {
-            setModalVisible(false)
-            console.log('app reference already exists')
-          }
-        })
-        .catch(e => {
-          console.log(`user update error ${e}`)
-          Alert.alert('Ups..', "Ada yang salah", [
-            { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ]);
-        });
-    });
+      });
 
+      //console.log(JSON.stringify(response.data), 'app version');
+      const current_app_version = response.data.version_code;
+      const versionNumber = await DeviceInfo.getVersion();
+      //console.log(versionNumber, 'versionNumber');
+      if (current_app_version > versionNumber) {
+        //console.log('update required')
+        setUpdateModalVisible(true)
+      } else {
+        //console.log('you are up to date') 
+        setUpdateModalVisible(false) 
+        fetchProfileData()
+      }
+    } catch (e) {
+      //console.log(`user update error ${e}`);
+      Alert.alert('Ups..', "Ada yang salah", [
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+    }
   }
+  const fetchProfileData = async () => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      console.log(token, 'tokennnnnnnn');
+
+      const response = await axios.get(`${env.BACKEND_URL}/mobile/my-profile`, {
+        headers: {
+          Accept: 'application/json',
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+
+      //console.log(JSON.stringify(response.data), 'ddddddddd');
+      const data = response.data;
+      const appReference = data?.user?.app_reference;
+      if (!appReference) {
+        setModalVisible(true);
+        //console.log('app reference not exists');
+      } else {
+        setModalVisible(false);
+        //console.log('app reference already exists');
+      }
+
+    } catch (e) {
+      console.log(`user update error ${e}`);
+      Alert.alert('Ups..', "Ada yang salah", [
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+    }
+  }
+
 
   const updateReference = () => {
     //console.log(value + ' ' + other,'firstttt');
@@ -190,6 +257,20 @@ const Home = ({
         });
         console.log('not other option')
       }
+    }
+  }
+
+  const updateApp = () => {
+    const playStoreId = 'com.halofoto.halofotoLive';
+    const appStoreLocale = 'us';
+    const appName = 'halofoto-app';
+    const appStoreId = 'id6474596677';
+    if (Platform.OS === 'ios') {
+      Linking.openURL(`https://apps.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`);
+    } else {
+      Linking.openURL(
+        `https://play.google.com/store/apps/details?id=${playStoreId}`
+      );
     }
   }
 
@@ -361,6 +442,28 @@ const Home = ({
             <RoundedCornerGradientStyleBlueFullWidth
               onPress={() => updateReference()}
               label={"Kirim"}
+            />
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        isVisible={isUpdateModalVisible}
+        animationIn="slideInUp"
+        animationInTiming={1000}
+        animationOut="slideOutDown"
+        style={{
+          margin: 0, // Add this line to remove the default margin
+          justifyContent: 'flex-end',
+        }}>
+        {/* <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', height: 50, width: 50, borderRadius: 25, position: 'absolute', bottom: '75%', left: '45%', right: '45%' }}>
+          <Icon name="cross" size={30} color="#900" onPress={toggleModal} />
+        </View> */}
+        <View style={{ height: '20%', backgroundColor: Colors.link_water, position: 'relative', width: '100%', padding: 20 }}>
+          <Text style={[styles.labelText, { textAlign: 'center', fontWeight: 'bold' }]}>Pembaruan aplikasi diperlukan</Text>
+          <View style={[styles.buttonWrap, { position: 'absolute', bottom: 0 }]}>
+            <RoundedCornerGradientStyleBlueFullWidth
+              onPress={() => updateApp()}
+              label={"Silakan Perbarui"}
             />
           </View>
         </View>
