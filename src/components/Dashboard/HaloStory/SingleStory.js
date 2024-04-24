@@ -84,6 +84,7 @@ const SingleStory = ({ route, navigation }) => {
   const handlePlay = async () => {
     try {
       await audioPlayerService.play()
+      
     } catch (error) { }
   }
 
@@ -96,8 +97,12 @@ const SingleStory = ({ route, navigation }) => {
 
   const handleVideoModal = (url, image) => {
     !!url ? (
+      console.log('need to increment watch', data),
+      console.log(storyId, 'storyid'),
       setVideoProp({ url, poster: image }),
       showVideoModal(true)
+      
+      
     ) : Toast.show(StaticText.alert.no_video_found)
   }
 

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import Constants from "expo-constants"
 import Colors from '../../../../global/Colors'
-import { responsiveFontSize, responsiveHeight } from 'react-native-responsive-dimensions'
+import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
 export default StyleSheet.create({
 
@@ -123,8 +123,8 @@ export default StyleSheet.create({
     alignSelf: "flex-start",
   },
   profileTitleOuter: {
-    height: 28,
-    width: 28,
+    height: 30,
+    width: 30,
     borderRadius: 30,
     display: "flex",
     alignItems: "center",
@@ -239,7 +239,7 @@ export default StyleSheet.create({
   newsDetailsWrap: {
     justifyContent:'center',
     alignItems:'center',
-    paddingBottom:responsiveHeight(5)
+    paddingBottom:responsiveHeight(5),
     //marginHorizontal:10
     //marginBottom:10
   },
@@ -257,11 +257,12 @@ export default StyleSheet.create({
     fontFamily: "Montserrat-Light",
   },
   textBannerCategory: {
-    fontSize: 11,
+    fontSize: responsiveFontSize(1.5),
     color: Colors.white,
     fontWeight: "400",
     fontFamily: "Montserrat-Regular",
     marginRight: 20,
+    width: responsiveWidth(65),
   },
   textBannerTime: {
     fontSize: 11,
@@ -269,6 +270,16 @@ export default StyleSheet.create({
     fontWeight: "400",
     fontFamily: "Montserrat-Regular",
   },
+  invisibleButton:{
+    position: 'absolute',
+    width: 100,   // Set desired dimensions
+    height: '100%',   // Set desired dimensions
+    bottom: 20,      // Adjust position as needed
+    //right: 10,    // Adjust position as needed
+    backgroundColor: 'red', // Making the button transparent
+    opacity: 10,   // Making the button fully transparent,
+   
+  }
 
 
 

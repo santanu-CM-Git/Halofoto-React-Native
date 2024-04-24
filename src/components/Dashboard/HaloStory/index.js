@@ -33,6 +33,8 @@ const HaloStory = () => {
     }, [currentPage])
 
     useEffect(() => {
+
+        // console.log(data.story, 'Halofoto story list')
         if (!loading && data?.story) {
             if (currentPage == 1) {
                 setStoryListData(data?.story?.data)
