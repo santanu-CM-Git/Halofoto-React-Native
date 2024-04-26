@@ -84,27 +84,29 @@ export default StyleSheet.create({
   categoryListBanner: {
     display: "flex",
     flexDirection: "row",
-    height: 424,
+    height: responsiveHeight(82),
     marginLeft: -20,
     marginRight: -20,
     marginBottom: 30,
   },
   newsCategorybannerbg: {
     width: "100%",
-    height: "100%",
+    height: responsiveHeight(82),
     position: "relative",
     zIndex:-5,
   },
 
   newsCategoryBannerOverlay: {
     position: "absolute",
-    height: "100%",
+    height: responsiveHeight(82),
     width: "100%",
-    display: "flex",
+    //display: "flex",
     justifyContent: "flex-end",
     paddingLeft: 15,
     paddingRight: 15,
     paddingBottom: 33,
+    
+    
   },
 
   newsMeta: {
@@ -139,7 +141,7 @@ export default StyleSheet.create({
     color: Colors.white,
   },
   iconWrap: {
-    width: 50,
+    width: responsiveWidth(10),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -262,7 +264,7 @@ export default StyleSheet.create({
     fontWeight: "400",
     fontFamily: "Montserrat-Regular",
     marginRight: 20,
-    width: responsiveWidth(65),
+    width: responsiveWidth(62),
   },
   textBannerTime: {
     fontSize: 11,

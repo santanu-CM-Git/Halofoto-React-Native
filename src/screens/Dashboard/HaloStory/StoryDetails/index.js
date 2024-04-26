@@ -20,7 +20,7 @@ import AppSettings from "../../../../global/AppSettings"
 import AnimatedHeader from "../../../Helper/AnimatedHeader"
 import StaticText from "../../../../global/StaticText"
 import AudioIcon from "../../../Helper/SvgImg/Audio"
-import VideoIcon from "../../../Helper/SvgImg/Video"
+import VideoIcon from "../../../Helper/SvgImg/VideoLarge"
 import Colors from "../../../../global/Colors"
 import styles from "./style"
 import PlayIcon from "../../../Helper/SvgImg/PlayIcon";
@@ -143,7 +143,7 @@ const StoryDetails = ({
                                 <Pressable onPress={() => (playerState !== eventState.Playing) && handlePlay()}>
                                   <AudioIcon />
                                 </Pressable>
-                              }
+                               }
                               {!!data?.story?.video_link &&
                                 <Pressable onPress={() => handleVideoModal(data?.story?.video_link, data?.story?.story_image)}>
                                   <VideoIcon />
@@ -181,7 +181,7 @@ const StoryDetails = ({
                       }
                     </View>
                   }
-                  <View style={styles.newsDetailsWrap}>
+                  {/* <View style={styles.newsDetailsWrap}>
                     <RenderHtml
                       renderers={renderers}
                       WebView={WebView}
@@ -197,7 +197,7 @@ const StoryDetails = ({
                       tagsStyles={tagsStyles}
                     />
                    
-                  </View>
+                  </View> */}
                 </>
                 }
               </View>

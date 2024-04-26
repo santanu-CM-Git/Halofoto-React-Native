@@ -8,7 +8,10 @@ import { showNavigation } from "../../../context/actions/common/manageNavigation
 import StoryDetailsScreen from "../../../screens/Dashboard/HaloStory/StoryDetails"
 import audioPlayerService from "../../../helpers/AudioPlayerService"
 import StaticText from "../../../global/StaticText"
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import env from '../../../config/env'
+import axios from "axios";
+import { Alert } from "react-native";
 
 const SingleStory = ({ route, navigation }) => {
 
@@ -99,11 +102,32 @@ const SingleStory = ({ route, navigation }) => {
     !!url ? (
       console.log('need to increment watch', data),
       console.log(storyId, 'storyid'),
+      incrementViewsApi(storyId),
       setVideoProp({ url, poster: image }),
       showVideoModal(true)
       
       
     ) : Toast.show(StaticText.alert.no_video_found)
+  }
+  const incrementViewsApi = async (storyId) => {
+    try {
+      const token = await AsyncStorage.getItem('token');
+      console.log(token, 'tokennnnnnnn');
+
+      const response = await axios.get(`${env.BACKEND_URL}/mobile/story-views/${storyId}`, {
+        headers: {
+          Accept: 'application/json',
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      const data = response.data;
+     
+    } catch (e) {
+      console.log(`user update error ${e}`);
+      Alert.alert('Ups..', "Ada yang salah", [
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+    }
   }
 
   const handlePause = async () => await audioPlayerService.pause()

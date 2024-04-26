@@ -261,15 +261,11 @@ const Home = ({
   }
 
   const updateApp = () => {
-    const playStoreId = 'com.halofoto.halofotoLive';
-    const appStoreLocale = 'us';
-    const appName = 'halofoto-app';
-    const appStoreId = 'id6474596677';
     if (Platform.OS === 'ios') {
-      Linking.openURL(`https://apps.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`);
+      Linking.openURL(`https://apps.apple.com/${env.appStoreLocale}/app/${env.appName}/id${env.appStoreId}`);
     } else {
       Linking.openURL(
-        `https://play.google.com/store/apps/details?id=${playStoreId}`
+        `https://play.google.com/store/apps/details?id=${env.playStoreId}`
       );
     }
   }
