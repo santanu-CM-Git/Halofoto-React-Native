@@ -13,10 +13,15 @@ const ListItem = ({ item, onPress, toDaysMinutesSeconds }) => {
         })} unstable_pressDelay={200}>
             <View style={styles.newsCardContent}>
                 <Text style={styles.textCardNews}>{item?.name}</Text>
-                <Text style={styles.textCardSmall}>
-                    {moment(item?.created_at).format("DD MMM YYYY")}
-                </Text>
-
+                {item?.status_action_date ?
+                    <Text style={styles.textCardSmall}>
+                        {moment(item?.status_action_date).format("DD MMM YYYY")}
+                    </Text>
+                    :
+                    <Text style={styles.textCardSmall}>
+                        {moment(item?.created_at).format("DD MMM YYYY")}
+                    </Text>
+                }
                 <View style={styles.iconWrap}>
                     {item?.audio_duration && !!item?.audio_duration && (
                         <>

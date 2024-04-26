@@ -279,7 +279,17 @@ export default StyleSheet.create({
     backgroundColor: 'red', // Making the button transparent
     opacity: 10,   // Making the button fully transparent,
    
-  }
+  },
+  backgroundVideo: {
+    // position: 'absolute',
+    // top: 0,
+    // left: 0,
+    // bottom: 0,
+    // right: 0,
+    height:responsiveHeight(50),
+    width:responsiveWidth(90)
+    
+  },
 
 
 
