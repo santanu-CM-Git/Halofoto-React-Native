@@ -314,7 +314,7 @@ const StaticText = {
                 change_password: `Ganti Kata Sandi`,
                 invite_friend: `Undang Teman`,
                 logout: `Keluar`,
-                download_helofoto: `Unduh HaloFoto`,
+                download_helofoto: `Unduh Halofoto App untuk`,
                 referral_code: `Kode Referal`,
                 delete: `Hapus akun`
             }

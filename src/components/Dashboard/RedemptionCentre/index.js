@@ -7,6 +7,7 @@ import { hideNavigation } from "../../../context/actions/common/manageNavigation
 import RedemptionCentreListScreen from "../../../screens/Dashboard/RedemptionCentre/RedemptionCentreList"
 import { clearVoucherState } from "../../../context/actions/dashboard/reedemVoucher"
 import StaticText from "../../../global/StaticText"
+import env from '../../../config/env'
 
 const RedemptionCentre = () => {
   const {
@@ -71,7 +72,7 @@ const RedemptionCentre = () => {
       // })
       const result = await Share.share({
         message: `${StaticText.screen.my_profile.content.download_helofoto
-          } https://play.google.com/store/apps ${profileData?.user?.referral_code?.length &&
+          }  Android https://play.google.com/store/apps/details?id=${env.playStoreId} | ATAU | Halofoto App untuk IOS https://apps.apple.com/${env.appStoreLocale}/app/${env.appName}/id${env.appStoreId} | Jangan lewatkan Podcast yang menarik, berita terbaru dan segala merchandise keren GRATIS dari Halofoto App. ${profileData?.user?.referral_code?.length &&
           ` | ${StaticText.screen.my_profile.content.referral_code}: ${profileData?.user?.referral_code}`
           }`,
       })

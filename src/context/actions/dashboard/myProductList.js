@@ -9,7 +9,7 @@ export default () => dispatch => {
    })          
 
    axiosInstance.get('/mobile/get-register-product').then(res => {  
-    console.log(res.data,'hhhhhhhhhhhhhhhhhhhhhhhh')
+    //console.log(res.data,'hhhhhhhhhhhhhhhhhhhhhhhh')
        dispatch({
            type: MY_PRODUCT_LIST_SUCCESS,
            payload: res.data,
