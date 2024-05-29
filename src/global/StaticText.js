@@ -340,7 +340,8 @@ const StaticText = {
                 expired: 'Kadaluarsa pada',
                 earn_points: 'Dapatkan lebih banyak poin',
                 register_product: 'Daftarkan produk Anda',
-                invite_friends: 'Undang Teman'
+                invite_friends: 'Undang Teman',
+                newText: 'Permintaan Redeem diterima, Merchandise Akan Dikirimkan Ke Alamat Kamu',
             }
         },
 

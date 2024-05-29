@@ -229,18 +229,18 @@ export default StyleSheet.create({
     paddingBottom: 10,
   },
 
-  categoryTagCard: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 40,
-    backgroundColor: "#020818",
-    paddingLeft: 10,
-    paddingRight: 10,
-    height: 25,
-    alignSelf: "flex-start",
-    marginBottom: 10,
-  },
+  // categoryTagCard: {
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   borderRadius: 40,
+  //   backgroundColor: "#020818",
+  //   paddingLeft: 10,
+  //   paddingRight: 10,
+  //   height: 25,
+  //   alignSelf: "flex-start",
+  //   marginBottom: 10,
+  // },
 
   newsCardImg: {
     width: "35%",
@@ -314,7 +314,8 @@ export default StyleSheet.create({
   },
 
   categoryWrappOuter:{
-    display:'flex',
+    //display:'flex',
+    flexWrap: 'wrap',
     flexDirection:'row',
   },
  newsMeta: {

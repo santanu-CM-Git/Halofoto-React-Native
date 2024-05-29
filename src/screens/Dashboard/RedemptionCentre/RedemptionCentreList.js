@@ -92,7 +92,7 @@ const RedemptionCentreList = ({
         source={AppSettings.background_inner_image_dark}
       >
        <SafeAreaView>
-
+    
         <AnimatedHeader
           label={StaticText.screen.redemption_centre.heading}
           mainWrapperStyle={styles.topHeader}
@@ -106,7 +106,6 @@ const RedemptionCentreList = ({
             <ActivityIndicator size="large" color={Colors.royal_blue} />
           ) : voucherData.length ? (
             <>
-             
                 <FlatList
                   onRefresh={onRefresh}
                   refreshing={refreshing}

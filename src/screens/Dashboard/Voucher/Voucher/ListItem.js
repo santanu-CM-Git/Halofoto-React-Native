@@ -11,6 +11,7 @@ import TickGreen from "../../../Helper/SvgImg/TickGreen";
 import Colors from "../../../../global/Colors";
 
 const ListItem = ({ item, onPress }) => {
+  console.log(item,'bbbbb')
   return (
     <Pressable
       style={styles.newsCard}
@@ -71,12 +72,13 @@ const ListItem = ({ item, onPress }) => {
               <View style={styles.validWrapp}>
                 {item?.voucher_use_status == 1 ? (
                   <>
-                    <Text style={styles.ValidDate}>
+                    {/* <Text style={styles.ValidDate}>
                       {StaticText?.screen?.redemption_centre?.content?.used}{" "}
                     </Text>
                     <Text style={styles.ValidDate}>
                       {moment(item?.voucher_used_at).format("Do MMM YY")}
-                    </Text>
+                    </Text> */}
+                     <Text style={styles.ValidDate}>{StaticText?.screen?.redemption_centre?.content?.newText}</Text>
                   </>
                 ) : (
                   <>
