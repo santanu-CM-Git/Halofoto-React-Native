@@ -17,7 +17,7 @@ import {
   useWindowDimensions,
   Alert,
 } from "react-native";
-
+import { Dropdown } from 'react-native-element-dropdown';
 import RenderHtml from "react-native-render-html";
 import AppSettings from "../../../../global/AppSettings";
 import StaticText from "../../../../global/StaticText";
@@ -40,31 +40,55 @@ const SingleRedemption = ({
   reedemVoucherData,
 }) => {
   //console.log(data,'dtatadatadtata')
+  const [value, setValue] = useState('');
+  const [dropdownError, setDropdownError] = useState('Silakan pilih salah satu opsi')
+  const [datadropdown, setdatadropdown] = useState([])
+  const [isFocus, setIsFocus] = useState(false);
   const [addressStatus, setAddressStatus] = useState(false)
   const { width } = useWindowDimensions();
   const contentDetails = {
     html: `<div style="color:white;word-wrap:break-word;font-size:18px;font-weight:400;">${data?.voucher_details?.content?.length
-        ? data?.voucher_details?.content
-        : ``
+      ? data?.voucher_details?.content
+      : ``
       }</div>`,
   };
 
   useEffect(() => {
     console.log('useEffectbbbbbb', data)
+    let datadropdown = [];
+
+    if (data.voucher_details && data.voucher_details.size !== null) {
+      const sizes = data.voucher_details.size.split(',');
+      datadropdown = sizes.map(size => ({ label: size, value: size }));
+    }else{
+      datadropdown = []
+    }
+    setdatadropdown(datadropdown)
     setAddressStatus(data?.address_status)
   }, [])
 
   useFocusEffect(
     useCallback(() => {
       console.log('useFocusEffectbbbbbb', data)
+      let datadropdown = [];
+
+      if (data.voucher_details && data.voucher_details.size !== null) {
+        const sizes = data.voucher_details.size.split(',');
+        datadropdown = sizes.map(size => ({ label: size, value: size }));
+      }else{
+        datadropdown = []
+      }
+      setdatadropdown(datadropdown)
       setAddressStatus(data?.address_status)
     }, [data])
   )
 
-  const checkbefore = (id, status) => {
+  const checkbefore = (id, status, value) => {
     //console.log(id)
     console.log(status, 'status from check before')
+    console.log(value)
     //onSubmit(id)
+
     if (status == false) {
       Alert.alert('', 'Mohon Pastikan Kamu Sudah Memasukkan Nomor Telpon dan Alamat Yang Benar', [
         {
@@ -75,8 +99,25 @@ const SingleRedemption = ({
         { text: 'OK', onPress: () => onPress(MY_PROFILE_MANAGE) },
       ])
     } else {
-      onSubmit(id)
+      if (datadropdown.length != '0') {
+        if (value == '') {
+          Alert.alert('', 'Silakan pilih salah satu opsi', [
+            {
+              text: 'Cancel',
+              onPress: () => console.log('Cancel Pressed'),
+              style: 'cancel',
+            },
+            { text: 'OK', onPress: () => console.log('Ok Pressed') },
+          ])
+        } else {
+          onSubmit(id, value)
+        }
+      } else {
+        onSubmit(id, '')
+      }
     }
+
+
   }
 
   return (
@@ -198,6 +239,34 @@ const SingleRedemption = ({
                           enableExperimentalMarginCollapsing={true}
                         />
                       </View>
+                      {datadropdown.length != '0' ?
+                      <>
+                      <Text style={[styles.textCardContent,{marginBottom:10}]}>Size :</Text>
+                        <Dropdown
+                          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                          placeholderStyle={styles.placeholderStyle}
+                          selectedTextStyle={styles.selectedTextStyle}
+                          inputSearchStyle={styles.inputSearchStyle}
+                          itemTextStyle={styles.itemTextStyle}
+                          iconStyle={styles.iconStyle}
+                          data={datadropdown}
+                          //search
+                          maxHeight={300}
+                          labelField="label"
+                          valueField="value"
+                          placeholder={!isFocus ? 'pilih satu opsi' : '...'}
+                          searchPlaceholder="Search..."
+                          value={value}
+                          onFocus={() => setIsFocus(true)}
+                          onBlur={() => setIsFocus(false)}
+                          onChange={item => {
+                            setValue(item.value);
+                            setDropdownError('')
+                            setIsFocus(false);
+                          }}
+                        />
+                        </>
+                         : <></>}
 
                       {reedemVoucherData?.message?.length ? (
                         <>
@@ -224,7 +293,7 @@ const SingleRedemption = ({
                               <View style={styles.uploadButtonWrap}>
                                 <RoundedCornerGradientStyleBlueFullWidth
                                   onPress={() =>
-                                    checkbefore(data?.voucher_details?.id, addressStatus)
+                                    checkbefore(data?.voucher_details?.id, addressStatus, value)
                                   }
                                   label={StaticText.button.change_point}
                                   disabled={loading}
@@ -242,7 +311,7 @@ const SingleRedemption = ({
           </SafeAreaView>
         </LinearGradient>
         {/* </ImageBackground> */}
-      </View>
+      </View >
     </>
   );
 };

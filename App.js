@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import 'react-native-gesture-handler'
-import { LogBox, Alert, Button,View,StyleSheet,Linking } from 'react-native'
+import { LogBox, Alert, Button, View, StyleSheet, Linking, AppState } from 'react-native'
 import DeviceInfo from 'react-native-device-info';
 import GlobalProvider from "./src/context/Provider"
 import AppNavContainer from "./src/navigations"
@@ -13,6 +13,8 @@ import SpInAppUpdates, {
   NeedsUpdateResponse,
   IncomingStatusUpdateEvent,
 } from 'sp-react-native-in-app-updates';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 LogBox.ignoreLogs([
   "Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`",
   "ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'.",
@@ -22,6 +24,8 @@ const HIGH_PRIORITY_UPDATE = 5;
 export default function App() {
   const [needsUpdate, setNeedsUpdate] = useState(false);
   const [otherData, setOtherData] = useState(null);
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const inAppUpdates = new SpInAppUpdates();
   useEffect(() => {
     if (Platform.OS == 'android') {
@@ -55,13 +59,68 @@ export default function App() {
     }
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', nextAppState => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === 'active'
+      ) {
+        console.log('App has come to the foreground!');
+      }
+
+      appState.current = nextAppState;
+      setAppStateVisible(appState.current);
+      console.log('AppState', appState.current);
+      //console.log(new Date().toLocaleString())
+      //console.log(new Date().toLocaleString('en-GB', { hour12: false }))
+      //console.log(new Date().toLocaleString(undefined, { hour12: false, hourCycle: 'h23' }));
+      const currentTime = new Date().toLocaleString('en-GB', { hour12: false });
+      AsyncStorage.getItem('token', (err, token) => {
+        console.log(token, 'tokennnnnnnn')
+        var option = {};
+        if (appState.current == 'active') {
+          var option = {
+            "flag": 'start',
+            "time": currentTime,
+          }
+        } else if (appState.current == 'background') {
+          var option = {
+            "flag": 'end',
+            "time": currentTime,
+          }
+        }
+
+        console.log(option)
+        axios.post(`${env.BACKEND_URL}/mobile/user-track`, option, {
+          headers: {
+            Accept: 'application/json',
+            "Authorization": 'Bearer ' + token,
+          },
+        })
+          .then(res => {
+            console.log(JSON.stringify(res.data))
+          })
+          .catch(e => {
+            console.log(`user update error ${JSON.stringify(e.response)}`)
+            // Alert.alert('Ups..', "Ada yang salah", [
+            //   { text: 'OK', onPress: () => console.log('OK Pressed') },
+            // ]);
+          });
+      });
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+
+  useEffect(() => {
     //checkForUpdates()
     console.log(env.PLATFORM)
-    if(env.PLATFORM != 'dev'){
+    if (env.PLATFORM != 'dev') {
       checkForUpdates()
     }
-  },[])
+  }, [])
 
   const checkForUpdates = () => {
     inAppUpdates.checkNeedsUpdate({
@@ -106,22 +165,22 @@ export default function App() {
     const versionNumber = await DeviceInfo.getVersion();
     console.log(versionNumber)
   }
-  
+
   return (
     <>
-    
+
       <GlobalProvider>
         <AppNavContainer />
       </GlobalProvider>
       {needsUpdate && (
-          <View style={styles.aButton}>
-            <Button
-              title="Update Available!! Start Updating"
-              color="#841584"
-              onPress={()=>startUpdating()}
-            />
-          </View>
-        )}
+        <View style={styles.aButton}>
+          <Button
+            title="Update Available!! Start Updating"
+            color="#841584"
+            onPress={() => startUpdating()}
+          />
+        </View>
+      )}
     </>
 
   )
@@ -133,7 +192,7 @@ const styles = StyleSheet.create({
     // marginVertical: 25,
     //borderRadius: 8,
     // marginHorizontal: 50,
-   
+
   },
   textStyle: {
     color: 'black',

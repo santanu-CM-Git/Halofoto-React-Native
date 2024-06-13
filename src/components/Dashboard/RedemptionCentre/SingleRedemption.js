@@ -17,7 +17,7 @@ const SingleRedemption = ({ route, navigation }) => {
         navigationDispatch, navigationState: { display }
     } = useContext(GlobalContext)
 
-    const { voucherId } = route.params
+    const { voucherId,value } = route.params
     const isFocused = useIsFocused()
     // useFocusEffect(
     //     useCallback(() => {
@@ -49,8 +49,10 @@ const SingleRedemption = ({ route, navigation }) => {
         routes ? navigation.navigate(routes) : navigation.goBack()
     }
 
-    const onSubmit = param => {
-        reedemVoucher(param, 1)(reedemVoucherDispatch)
+    const onSubmit = (param,value) => {
+        console.log(value,'bbbbb')
+        console.log(param,'llllll')
+        reedemVoucher(param, 1,value)(reedemVoucherDispatch)
     }
     useEffect(() => {
         reedemVoucherError?.message?.length &&

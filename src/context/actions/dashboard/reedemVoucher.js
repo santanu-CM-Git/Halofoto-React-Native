@@ -14,7 +14,7 @@ export const clearVoucherState = () => dispatch => {
   })
 }
 
-export default (voucherId, quantity) => (dispatch) => {
+export default (voucherId, quantity, value) => (dispatch) => {
   dispatch({
     type: REDEMPTION_VOUCHER_LOADING,
   });
@@ -22,6 +22,7 @@ export default (voucherId, quantity) => (dispatch) => {
   let formData = new FormData();
   formData.append("voucher_info_id", voucherId);
   formData.append("quantity", quantity);
+  formData.append("size",value)
 
   axiosInstance
     .post("/mobile/redeem-points", formData)

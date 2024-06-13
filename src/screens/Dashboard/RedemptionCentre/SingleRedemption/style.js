@@ -1,5 +1,6 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from "react-native";
 import Colors from "../../../../global/Colors";
+import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
 const {height,width} = Dimensions.get('window')
 
@@ -298,5 +299,52 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
+  },
+  /*-----for dropdown-----*/
+  dropdown: {
+    height: responsiveHeight(7),
+    width:'100%',
+    borderColor: '#FFF',
+    borderWidth: 0.7,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginBottom:responsiveHeight(5)
+    //marginTop: 5
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    color: '#FFF',
+    //color: Colors.white,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+    //color: Colors.white,
+    color: '#FFF'
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+    color: '#FFF'
+  },
+  itemTextStyle:{
+    color:'#2F2F2F'
+  },
+  itemContainerStyle:{
+    backgroundColor: Colors.catalina_blue
+  },
+  inputTextColor:{
+    color: '#2F2F2F'
+  },
+  iconStyle: {
+    width: 30,
+    height: 30,
+    color: Colors.white
+  },
+  labelErrorText: {
+    fontSize: 14,
+    color: '#900',
+    textTransform: "capitalize",
+    fontWeight: "300",
+    marginLeft: responsiveWidth(2)
   },
 });
