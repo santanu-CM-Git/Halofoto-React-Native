@@ -12,7 +12,6 @@ import {
 } from "react-native"
 import Carousel from 'react-native-banner-carousel';
 import Modal from "react-native-modal";
-import { FlashList } from "@shopify/flash-list"
 import { LinearGradient } from "expo-linear-gradient"
 import { SafeAreaView } from "react-native-safe-area-context"
 import AppSettings from "../../../global/AppSettings"
