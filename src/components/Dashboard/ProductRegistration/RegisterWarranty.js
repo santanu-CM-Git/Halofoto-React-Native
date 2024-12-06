@@ -83,7 +83,6 @@ const RegisterWarranty = ({ route, navigation }) => {
     }
 
     const onSubmit = () => {
-
         if (!form.model_no) {
             setErrors(prev => {
                 return { ...prev, model_no: StaticText.alert.error }
@@ -113,7 +112,6 @@ const RegisterWarranty = ({ route, navigation }) => {
                 setForm(form => {
                     return {}
                 })
-
                 navigate(WARENTY_REGISTRATION_FILE_UPLOAD, {
                     warrantyId: response?.warranty?.id
                 })

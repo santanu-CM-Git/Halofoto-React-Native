@@ -2,7 +2,7 @@ import { StyleSheet, StatusBar, Dimensions } from 'react-native';
 import Colors from '../../../global/Colors';
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 
-const {height,width} = Dimensions.get('screen')
+const { height, width } = Dimensions.get('screen')
 
 export default StyleSheet.create({
   // container: {
@@ -13,10 +13,10 @@ export default StyleSheet.create({
   //   paddingLeft: 0,
   //   paddingRight: 0,
   // },
-  
+
   overlayWrap: {
     backgroundColor: Colors.black,
-    height: height*0.91,
+    height: height * 0.91,
     width: width,
     display: 'flex',
     alignItems: 'center',
@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
 
   overlayWrapBanner: {
-    height: height*0.25,
+    height: height * 0.25,
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
@@ -64,7 +64,7 @@ export default StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     position: 'relative',
     zIndex: 1,
-    width: width*0.5,
+    width: width * 0.5,
     marginBottom: 15,
     paddingLeft: 15,
   },
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     fontFamily: 'Montserrat-Regular',
     position: 'relative',
     zIndex: 1,
-    width: width*0.4,
+    width: width * 0.4,
     marginBottom: 15,
     paddingLeft: 20,
   },
@@ -100,12 +100,12 @@ export default StyleSheet.create({
   },
 
   buttonWrap: {
-    width:'80%',
+    width: '80%',
     height: 50,
     borderRadius: 60,
-    alignSelf:'center',
-    marginBottom:20,
-    marginTop:10
+    alignSelf: 'center',
+    marginBottom: 20,
+    marginTop: 10
   },
 
   buttonText: {
@@ -115,9 +115,9 @@ export default StyleSheet.create({
   },
 
   tabWrap: {
-    height:height*0.5,
+    height: height * 0.5,
     width: width * 0.96,
-    flex:1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -126,17 +126,17 @@ export default StyleSheet.create({
 
   tabs: {
     backgroundColor: Colors.deep_cove,
-    flex:0.22,
+    flex: 0.22,
     alignItems: 'center',
     justifyContent: 'space-around',
     flexDirection: 'column',
     // height: 88,
     // width: 95,
-    width:width*0.23,
+    width: width * 0.23,
     padding: 5,
     borderRadius: 20,
     marginRight: 5,
-    marginLeft:5,
+    marginLeft: 5,
     marginTop: 5,
     borderColor: Colors.torea_bay,
     borderWidth: 1,
@@ -164,7 +164,7 @@ export default StyleSheet.create({
   /*-----for dropdown-----*/
   dropdown: {
     height: responsiveHeight(4),
-    width:'100%',
+    width: '100%',
     borderColor: 'gray',
     //borderWidth: 0.7,
     borderRadius: 8,
@@ -186,13 +186,13 @@ export default StyleSheet.create({
     fontSize: 16,
     color: '#2F2F2F'
   },
-  itemTextStyle:{
-    color:'#2F2F2F'
+  itemTextStyle: {
+    color: '#2F2F2F'
   },
-  itemContainerStyle:{
+  itemContainerStyle: {
     backgroundColor: Colors.catalina_blue
   },
-  inputTextColor:{
+  inputTextColor: {
     color: '#2F2F2F'
   },
   iconStyle: {
@@ -201,11 +201,11 @@ export default StyleSheet.create({
     color: Colors.white
   },
   inputWrapp: {
-   justifyContent:'center',
+    justifyContent: 'center',
     width: "100%",
-   borderColor:Colors.blue,
-   borderWidth:1,
-   borderRadius:10
+    borderColor: Colors.blue,
+    borderWidth: 1,
+    borderRadius: 10
   },
   labelText: {
     fontSize: 14,

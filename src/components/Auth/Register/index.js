@@ -67,7 +67,7 @@ const Register = () => {
   }, [])
 
   useEffect(() => {
-    console.log(error, 'jjjjj')
+    //console.log(error, 'jjjjj')
     error?.reg_message?.length &&
       Alert.alert(StaticText.alert.error_heading, error?.reg_message, [
         { text: StaticText.button.ok, onPress: () => { navigate(REGISTER) } },
@@ -115,7 +115,7 @@ const Register = () => {
   }
 
    const onSubmit = () => {
-    console.log(form, 'payload when registration submit')
+    //console.log(form, 'payload when registration submit')
     if (!form.name) {
       setErrors((prev) => {
         return { ...prev, name: StaticText.alert.error }
@@ -176,7 +176,7 @@ const Register = () => {
         { text: 'OKE', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
-      console.log(Object.values(form).length)
+      //console.log(Object.values(form).length)
       if (
         Object.values(form).length >= 7 
         //&& Object.values(form).every(item => item || item?.trim()?.length > 0)

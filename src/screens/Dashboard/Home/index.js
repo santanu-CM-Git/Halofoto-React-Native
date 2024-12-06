@@ -126,7 +126,7 @@ const Home = ({
         setUpdateModalVisible(true)
       } else {
         //console.log('you are up to date') 
-        setUpdateModalVisible(false) 
+        setUpdateModalVisible(false)
         fetchProfileData()
       }
     } catch (e) {
@@ -364,11 +364,13 @@ const Home = ({
         // showLoader={loading}
         />
       </View>
-      <View style={styles.tabWrap}>
-        {navMenus.length && navMenus.map((item, index) =>
-          <DashboardButtons key={item.name} menu={item} onPress={onPress} isNewNotification={notificationCount} />
-        )}
-      </View>
+      <ScrollView style={{ marginBottom: 50 }}>
+        <View style={styles.tabWrap}>
+          {navMenus.length && navMenus.map((item, index) =>
+            <DashboardButtons key={item.name} menu={item} onPress={onPress} isNewNotification={notificationCount} />
+          )}
+        </View>
+      </ScrollView>
       <Modal
         isVisible={isModalVisible}
         animationIn="slideInUp"

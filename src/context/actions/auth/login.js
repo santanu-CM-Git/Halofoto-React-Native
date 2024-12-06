@@ -29,11 +29,8 @@ export default ({
     formData.append('email', email)
     formData.append('password', password)
     formData.append('notification_token', fcmToken)
-
     axiosInstance.post('/mobile/user-login', formData).then(res => {
-
-   
-        //console.log(res.data,'response from login')
+        //console.log('res...', res.data);
         AsyncStorage.removeItem("user")
         AsyncStorage.removeItem("token")
         AsyncStorage.removeItem("otp")
@@ -46,7 +43,6 @@ export default ({
             payload: res.data,
         })
     }).catch(err => {
-       
         dispatch({
             type: LOGIN_FAIL,
             payload: err.response ? err.response.data : { error: StaticText.axios.error },

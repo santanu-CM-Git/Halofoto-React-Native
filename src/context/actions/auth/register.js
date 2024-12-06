@@ -53,7 +53,7 @@ export default ({
     formData.append('app_reference', app_reference)
     formData.append('other', other)
 
-    console.log(dob, 'xxxxxxxxxxxxmmmmmmmxmxmxmxmxm')
+    //console.log(dob, 'xxxxxxxxxxxxmmmmmmmxmxmxmxmxm')
 
     axiosInstance.post('/mobile/user-register', formData).then(res => {
         AsyncStorage.removeItem("user")

@@ -35,6 +35,10 @@ import ERepair from "../components/Dashboard/MyProduct/ERepair"
 import SoftwareLicense from "../components/Common/Settings/SoftwareLicense"
 // import TermsAndConditions from "../components/Dashboard/WarrantyTermsAndConditions"
 
+import GiftCoupon from "../components/Dashboard/GiftCoupon"
+import GiftCouponDetails from "../components/Dashboard/GiftCoupon/GiftCouponDetails"
+import GiftProductList from "../components/Dashboard/GiftCoupon/GiftProductList"
+
 const DashboardStackNavigator = () => {
     const DashboardStack = createStackNavigator()
     return (
@@ -73,9 +77,12 @@ const DashboardStackNavigator = () => {
                 <DashboardStack.Screen name={RouteNames.MESSAGE_DETAILS} component={MessageDetails} />
                 <DashboardStack.Screen name={RouteNames.E_REPAIR} component={ERepair} />
                 <DashboardStack.Screen name={RouteNames.SOFTWARE_LICENSE} component={SoftwareLicense} />
+                <DashboardStack.Screen name={RouteNames.GIFT_COUPON} component={GiftCoupon} />
+                <DashboardStack.Screen name={RouteNames.GIFT_COUPON_DETAILS} component={GiftCouponDetails} />
+                <DashboardStack.Screen name={RouteNames.GIFT_PRODUCT_LIST} component={GiftProductList} />
                 {/* <DashboardStack.Screen name={RouteNames.TERMS_AND_CONDITIONS} component={TermsAndConditions} /> */}
             </DashboardStack.Group>
-            
+
         </DashboardStack.Navigator>
     )
 }

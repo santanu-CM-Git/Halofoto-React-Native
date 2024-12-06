@@ -92,6 +92,7 @@ const StaticText = {
                 my_points: `Poin Saya`,
                 news: `Berita`,
                 message: `Pesan`,
+                gift_coupon: `Voucher Hadiah`,
             }
         },
 
@@ -389,6 +390,12 @@ const StaticText = {
                 original_price: `Harga asli`,
                 selling_price: `Harga jual`,
                 model: `Model`,
+            }
+        },
+        gift_voucher: {
+            heading: `Voucher Hadiah`,
+            content: {
+                voucher_product_List: `Daftar Produk Voucher`,
             }
         },
 

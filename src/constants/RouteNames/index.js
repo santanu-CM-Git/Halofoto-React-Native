@@ -74,3 +74,7 @@ export const MESSAGE_LIST = 'Message List'
 export const MESSAGE_DETAILS = 'Message Details'
 
 export const SOFTWARE_LICENSE = 'Software License'
+
+export const GIFT_COUPON = 'Gift Coupon'
+export const GIFT_COUPON_DETAILS = 'Gift Coupon Details'
+export const GIFT_PRODUCT_LIST = 'Gift Coupon Product List'

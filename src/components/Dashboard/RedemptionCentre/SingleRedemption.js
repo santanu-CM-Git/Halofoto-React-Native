@@ -50,8 +50,8 @@ const SingleRedemption = ({ route, navigation }) => {
     }
 
     const onSubmit = (param,value) => {
-        console.log(value,'bbbbb')
-        console.log(param,'llllll')
+        //console.log(value,'bbbbb')
+        //console.log(param,'llllll')
         reedemVoucher(param, 1,value)(reedemVoucherDispatch)
     }
     useEffect(() => {

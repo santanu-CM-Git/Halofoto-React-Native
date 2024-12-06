@@ -13,6 +13,7 @@ import Reviews from "../../Helper/SvgImg/Reviews"
 import Myloyalty from "../../Helper/SvgImg/Myloyalty"
 import News from "../../Helper/SvgImg/News"
 import Message from "../../Helper/SvgImg/Message"
+import GiftCoupon from "../../Helper/SvgImg/GiftCoupon"
 import HaloStory from "../../Helper/SvgImg/HaloStory"
 import styles from "./style"
 import { responsiveFontSize } from "react-native-responsive-dimensions"
@@ -67,6 +68,9 @@ const DashboardButtons = ({
         case 'message':
             CurrentComponent = Message
             break
+        case 'gift_coupon':
+            CurrentComponent = GiftCoupon
+            break
     }
 
     return (
@@ -74,14 +78,14 @@ const DashboardButtons = ({
             <Animated.View style={[styles.tabs, { opacity: animated }]}>
                 <CurrentComponent />
                 {menu.label == 'Pesan' ?
-                <View style={{ position: 'absolute', top: 10, right: 25 }}>{isNewNotification != '0'?<Text style={{ color: 'red',fontSize:responsiveFontSize(1) }}>{'\u2B24'}</Text>:null}</View>
-                :
-                null}
+                    <View style={{ position: 'absolute', top: 10, right: 25 }}>{isNewNotification != '0' ? <Text style={{ color: 'red', fontSize: responsiveFontSize(1) }}>{'\u2B24'}</Text> : null}</View>
+                    :
+                    null}
                 <Text style={styles.tabButtonText}>
                     {menu.label}
                 </Text>
             </Animated.View>
-           
+
         </Pressable>
     )
 }

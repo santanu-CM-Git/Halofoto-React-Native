@@ -10,13 +10,13 @@ import Orientation from 'react-native-orientation-locker';
 import { showNavigation } from '../../../context/actions/common/manageNavigation'
 import HomeScreen from '../../../screens/Dashboard/Home'
 import StaticText from '../../../global/StaticText'
-import { MY_PRODUCT_LIST, NEWS_LIST, HALO_STORY_LIST, PRODUCT_CATALOG, REVIEW_LIST, REDEMPTION_CENTRE, VOUCHER, MY_PROFILE,POIN_SAYA, MESSAGE_LIST } from '../../../constants/RouteNames'
+import { MY_PRODUCT_LIST, NEWS_LIST, HALO_STORY_LIST, PRODUCT_CATALOG, REVIEW_LIST, REDEMPTION_CENTRE, VOUCHER, MY_PROFILE, POIN_SAYA, MESSAGE_LIST, GIFT_COUPON } from '../../../constants/RouteNames'
 
 const Home = () => {
   const { dashboardBannerDispatch, dashboardBannerState: { error, loading, data },
     navigationDispatch, navigationState: { display },
     myProfileState: { profileError, profileLoading, profileData },
-    counterDispatch, counterState:{ counterData,counterError,counterLoading},
+    counterDispatch, counterState: { counterData, counterError, counterLoading },
     myProfileDispatch } = useContext(GlobalContext)
 
   const { navigate, goBack } = useNavigation()
@@ -75,6 +75,12 @@ const Home = () => {
       label: StaticText.screen.dashboard.tabs.message,
       navigation: MESSAGE_LIST,
       component: 'MessageList'
+    },
+    {
+      name: 'gift_coupon',
+      label: StaticText.screen.dashboard.tabs.gift_coupon,
+      navigation: GIFT_COUPON,
+      component: 'GiftCoupon'
     }
   ]
 
@@ -88,11 +94,11 @@ const Home = () => {
     )
   }, [isFocused])
 
-  useEffect(()=>{
-    if(Platform.OS == 'ios'){
+  useEffect(() => {
+    if (Platform.OS == 'ios') {
       Orientation.lockToPortrait();
     }
-  },[])
+  }, [])
 
   const onPress = route => (route == MY_PRODUCT_LIST) ? navigate(route, {
     slideIndex: 0
