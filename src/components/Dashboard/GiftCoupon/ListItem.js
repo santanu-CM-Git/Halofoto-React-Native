@@ -22,7 +22,7 @@ const ListItem = ({ item, onPress, readStatus }) => {
               <Text style={styles.textContent} numberOfLines={2}>{item?.voucher_name}</Text>
               <View style={styles.messageMeta}>
                 <Text style={styles.textContent}>
-                {moment(item?.vocher_start_date).format("Do MMM YY")}
+                  {moment(item?.vocher_start_date).format("Do MMM YY")}
                 </Text>
                 <Text style={styles.textContentTo}>to</Text>
                 {/* <View style={styles.metaDots}></View> */}
@@ -40,8 +40,7 @@ const ListItem = ({ item, onPress, readStatus }) => {
               style={styles.messageCategory}
             >
               <Text style={styles.textMessageCategory}>
-                {item?.redeem_voucher_status}
-                {/* Untuk Kamu */}
+                {item?.redeem_voucher_status == 1 ? 'Aktif' : 'Tidak Aktif'}
               </Text>
             </LinearGradient>
           </View>

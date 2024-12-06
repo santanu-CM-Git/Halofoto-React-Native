@@ -27,6 +27,7 @@ export default function App() {
   const appState = useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const inAppUpdates = new SpInAppUpdates();
+  
   useEffect(() => {
     if (Platform.OS == 'android') {
       const unsubscribeForeground = messaging().onMessage(async remoteMessage => {
@@ -76,7 +77,7 @@ export default function App() {
       //console.log(new Date().toLocaleString(undefined, { hour12: false, hourCycle: 'h23' }));
       const currentTime = new Date().toLocaleString('en-GB', { hour12: false });
       AsyncStorage.getItem('token', (err, token) => {
-        console.log(token, 'tokennnnnnnn')
+        //console.log(token, 'tokennnnnnnn')
         var option = {};
         if (appState.current == 'active') {
           var option = {
@@ -168,7 +169,6 @@ export default function App() {
 
   return (
     <>
-
       <GlobalProvider>
         <AppNavContainer />
       </GlobalProvider>

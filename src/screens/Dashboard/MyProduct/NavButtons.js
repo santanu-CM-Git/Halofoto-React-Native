@@ -9,7 +9,6 @@ import styles from "./style"
 import ERepairModal from './ERepair'
 
 const NavButtons = ({ menu, item, onPress, onPressTab, status }) => {
-    console.log(status, 'mmmmmmmmm')
     const animated = new Animated.Value(1)
     let CurrentComponent = ''
     const fadeIn = () => {
