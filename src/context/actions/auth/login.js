@@ -30,7 +30,7 @@ export default ({
     formData.append('password', password)
     formData.append('notification_token', fcmToken)
     axiosInstance.post('/mobile/user-login', formData).then(res => {
-        //console.log('res...', res.data);
+        console.log('res...', res.data);
         AsyncStorage.removeItem("user")
         AsyncStorage.removeItem("token")
         AsyncStorage.removeItem("otp")

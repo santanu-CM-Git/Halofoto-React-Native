@@ -121,7 +121,7 @@ export default function Login({
             <Pressable>
               <Text
                 style={[styles.labelSignUp, styles.textSignLink]}
-                onPress={() => onPress(REGISTER)}
+                onPress={() =>  (REGISTER)}
               >
                 {StaticText.button.sign_up}
               </Text>
