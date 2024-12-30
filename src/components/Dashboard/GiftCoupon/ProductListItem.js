@@ -23,8 +23,8 @@ const ProductListItem = ({ item, onPress }) => {
                         </View>}
                         <View style={[styles.productDetails, styles.productDetails]}>
                             <View style={styles.productDetailsInner}>
-                                <Text style={styles.textCompatiableMount}>Rp {item?.original_price}</Text>
-                                <View style={[styles.lensType, { marginLeft: 10, }]}>
+                                {/* <Text style={styles.textCompatiableMount}>Rp {item?.original_price}</Text> */}
+                                <View style={[styles.lensType, { marginLeft: 0, }]}>
                                     <Text style={styles.productModel}>
                                         {item.fixed_value !== null && item.fixed_value !== 0
                                             ? "Rp " + item.fixed_value

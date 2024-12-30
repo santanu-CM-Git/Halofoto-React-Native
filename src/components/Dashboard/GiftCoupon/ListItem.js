@@ -10,6 +10,8 @@ const ListItem = ({ item, onPress, readStatus }) => {
       onPress={() => {
         onPress(GIFT_PRODUCT_LIST, {
           voucherId: item?.voucher_id,
+          voucherCode: item?.voucher_code,
+          voucherImg: item?.voucher_image
         })
       }}
       unstable_pressDelay={100}

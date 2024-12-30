@@ -7,6 +7,7 @@ import {
     Dimensions,
     FlatList,
     Text,
+    Image,
     Alert
 } from "react-native"
 import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native"
@@ -25,7 +26,7 @@ import axios from "axios";
 
 const GiftProductList = () => {
     const route = useRoute();
-    const { voucherId } = route.params;
+    const { voucherId, voucherCode, voucherImg } = route.params;
     const { navigate, goBack } = useNavigation();
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -111,6 +112,24 @@ const GiftProductList = () => {
             ]);
         }
     }
+
+    const listHeader = () => (
+        <View style={styles.headerContainer}>
+            <View>
+                {voucherImg ?
+                    <Image
+                        source={{ uri: voucherImg }}
+                        loadingIndicatorSource={AppSettings.loader_image}
+                        style={styles.voucherImg}
+                    /> : null}
+            </View>
+            <View>
+                <Text style={styles.voucherCodeText}>Code : <Text style={styles.vCodeText}>{voucherCode}</Text></Text>
+            </View>
+        </View>
+    );
+
+
     const onEndReached = () => { }
 
     const onBackHandler = () => {
@@ -120,7 +139,7 @@ const GiftProductList = () => {
         <View style={styles.container}>
             <LinearGradient colors={['#284369', '#162B4D', '#1C387E', '#051434']} style={styles.overlayWrap}>
                 <AnimatedHeader
-                   label={StaticText.screen.gift_voucher.content.voucher_product_List}
+                    label={StaticText.screen.gift_voucher.content.voucher_product_List}
                     mainWrapperStyle={styles.topHeader}
                     innerWraperStyle={styles.titleHolder}
                     buttonWrapStyle={styles.backWrap}
@@ -148,6 +167,7 @@ const GiftProductList = () => {
                                         decelerationRate="fast"
                                         onEndReachedThreshold={0.5}
                                         onEndReached={onEndReached}
+                                        ListHeaderComponent={listHeader}
                                         ListFooterComponent={listFooter}
                                     //onScroll={e => setYAxisValue(e.nativeEvent.contentOffset.y.toFixed(0))}
                                     />

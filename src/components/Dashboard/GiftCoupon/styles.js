@@ -1,7 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import Constants from "expo-constants";
 import Colors from '../../../global/Colors';
 import { responsiveHeight } from 'react-native-responsive-dimensions';
+const width = Dimensions.get('window').width;
 
 export default StyleSheet.create({
   container: {
@@ -174,6 +175,25 @@ export default StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
     paddingHorizontal: 4,
-  }
-
+  },
+  headerContainer: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  voucherCodeText: {
+    color: '#ffffff',
+    fontSize: 15,
+    paddingTop: 10,
+  },
+  vCodeText: {
+    fontSize: 18,
+  },
+  voucherImg: {
+    width: width - 40,
+    height: width / 2,
+    resizeMode: 'cover',
+  },
 });

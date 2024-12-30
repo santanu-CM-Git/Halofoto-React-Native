@@ -19,7 +19,7 @@ import styles from "./style"
 import { responsiveFontSize } from "react-native-responsive-dimensions"
 
 const DashboardButtons = ({
-    menu, onPress, isNewNotification
+    menu, onPress, isGiftCoupon, isNewNotification
 }) => {
 
     const animated = new Animated.Value(1)
@@ -75,7 +75,7 @@ const DashboardButtons = ({
 
     return (
         <Pressable onPressIn={fadeIn} onPressOut={fadeOut} unstable_pressDelay={100}>
-            <Animated.View style={[styles.tabs, { opacity: animated }]}>
+            <Animated.View style={[styles.tabs, { opacity: animated, borderColor: isGiftCoupon ? 'red' : '#0A2F8E' }]}>
                 <CurrentComponent />
                 {menu.label == 'Pesan' ?
                     <View style={{ position: 'absolute', top: 10, right: 25 }}>{isNewNotification != '0' ? <Text style={{ color: 'red', fontSize: responsiveFontSize(1) }}>{'\u2B24'}</Text> : null}</View>

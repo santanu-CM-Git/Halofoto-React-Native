@@ -367,7 +367,12 @@ const Home = ({
       <ScrollView style={{ marginBottom: 50 }}>
         <View style={styles.tabWrap}>
           {navMenus.length && navMenus.map((item, index) =>
-            <DashboardButtons key={item.name} menu={item} onPress={onPress} isNewNotification={notificationCount} />
+            <DashboardButtons
+              key={item.name}
+              menu={item}
+              onPress={onPress}
+              isGiftCoupon={item.name === 'gift_coupon'}
+              isNewNotification={notificationCount} />
           )}
         </View>
       </ScrollView>
