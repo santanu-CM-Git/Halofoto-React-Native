@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
 import moment from "moment/moment";
 import { GIFT_PRODUCT_LIST } from "../../../constants/RouteNames";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const ListItem = ({ item, onPress, readStatus }) => {
   return (
@@ -34,17 +35,22 @@ const ListItem = ({ item, onPress, readStatus }) => {
               </View>
             </View>
           </View>
-          <View style={styles.messageInfo}>
-            <LinearGradient
-              colors={["#4874F7", "#83A7FE"]}
-              start={{ x: 1, y: 0 }}
-              end={{ x: 0, y: 0 }}
-              style={styles.messageCategory}
-            >
-              <Text style={styles.textMessageCategory}>
-                {item?.redeem_voucher_status == 1 ? 'Aktif' : 'Tidak Aktif'}
-              </Text>
-            </LinearGradient>
+          <View style={styles.rowDiv}>
+            <Text style={[styles.textContent, { marginLeft: responsiveWidth(5) }]}>
+              Buat  {moment(item?.voucher_created_at).format("Do MMM YY, h:mm A")}
+            </Text>
+            <View style={styles.messageInfo}>
+              <LinearGradient
+                colors={["#4874F7", "#83A7FE"]}
+                start={{ x: 1, y: 0 }}
+                end={{ x: 0, y: 0 }}
+                style={styles.messageCategory}
+              >
+                <Text style={styles.textMessageCategory}>
+                  {item?.redeem_voucher_status == 1 ? 'Aktif' : 'Tidak Aktif'}
+                </Text>
+              </LinearGradient>
+            </View>
           </View>
           {item.voucher_code_status == 1 ?
             <View style={styles.statusView}>

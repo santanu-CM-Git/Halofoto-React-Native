@@ -39,9 +39,14 @@ const GiftCoupon = () => {
     }, []);
 
     const fetchProfileData = async () => {
+        // console.log(env.BACKEND_URL);
+        // const token = await AsyncStorage.getItem('token')
+        // console.log(token);
+        
         setLoading(true);
         try {
             const token = await AsyncStorage.getItem('token');
+
             const response = await axios.get(`${env.BACKEND_URL}/mobile/user-voucher-list`, {
                 headers: {
                     Accept: 'application/json',

@@ -16,4 +16,4 @@ const environmentVariables = {
     appStoreId
 }
 
-export default environmentVariables
+export default environmentVariables 

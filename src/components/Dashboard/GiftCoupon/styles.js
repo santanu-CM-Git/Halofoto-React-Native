@@ -108,10 +108,10 @@ export default StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
   },
-
+  rowDiv: { flexDirection: 'row', justifyContent: 'space-between', width: '100%', },
   messageInfo: {
     display: 'flex',
-    width: '100%',
+    //width: '100%',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'flex-end'
