@@ -549,8 +549,6 @@ PODS:
   - RNScreens (3.24.0):
     - React-Core
     - React-RCTImage
-  - RNSha256 (1.4.9):
-    - React-Core
   - RNSVG (13.10.0):
     - React-Core
   - SwiftAudioEx (0.15.3)
@@ -635,7 +633,6 @@ DEPENDENCIES:
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSha256 (from `../node_modules/react-native-sha256`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -812,8 +809,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSha256:
-    :path: "../node_modules/react-native-sha256"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   Yoga:
@@ -915,7 +910,6 @@ SPEC CHECKSUMS:
   RNGoogleSignin: ccaa4a81582cf713eea562c5dd9dc1961a715fd0
   RNReanimated: b05e38849bcbe9fe521380815b53f816c72f0e29
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
-  RNSha256: a6bc3640a34eb41907e363828b9ec742c274298d
   RNSVG: 80584470ff1ffc7994923ea135a3e5ad825546b9
   SwiftAudioEx: 83eabba2940924fc1c0d5cb0896049921365229c
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
@@ -923,4 +917,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2bc5fd10eb324131a93f83cce260f2c850df3d93
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2
